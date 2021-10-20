@@ -5,9 +5,14 @@ from django.shortcuts import render
 
 # Create your views here.
 
+rooms = [
+    {'id':1, 'name':'learn django'},
+    {'id':2, 'name':'learn python'},
+    {'id':3, 'name':'learn git'},
+]
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'rooms':rooms})
 
 
 def profile(request):
