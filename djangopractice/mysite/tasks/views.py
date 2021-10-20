@@ -11,8 +11,10 @@ rooms = [
     {'id':3, 'name':'learn git'},
 ]
 
-def index(request, pk):
+def index(request):
     return render(request, 'index.html', {'rooms':rooms})
+
+
 
 
 def profile(request):
