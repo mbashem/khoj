@@ -11,7 +11,7 @@ rooms = [
     {'id':3, 'name':'learn git'},
 ]
 
-def index(request):
+def index(request, pk):
     return render(request, 'index.html', {'rooms':rooms})
 
 
