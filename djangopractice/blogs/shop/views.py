@@ -2,5 +2,6 @@ from django.shortcuts import render
 
 from django.http import  HttpResponse
 
+
 def index(request):
-    return HttpResponse("This is shop home page")
+    return render(request, 'shop/index.html')
