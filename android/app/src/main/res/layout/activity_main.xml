@@ -10,16 +10,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTodoItems"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddTodo"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="67dp" />
 
     <EditText
         android:id="@+id/etTdoTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Enter Todo Title"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddTodo"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -28,9 +30,7 @@
         android:layout_height="wrap_content"
         android:text="Add Todo"
         app:layout_constraintBottom_toBottomOf="@+id/etTdoTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toEndOf="@+id/etTdoTitle" />
+        tools:layout_editor_absoluteX="173dp" />
 
     <Button
         android:id="@+id/btnDeleteTodo"
@@ -38,7 +38,6 @@
         android:layout_height="wrap_content"
         android:text="Delet Todo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnAddTodo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
