@@ -121,6 +121,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#manage midea
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MIDEA_URL = '/midea/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
