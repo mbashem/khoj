@@ -6,7 +6,7 @@ from django.http import  HttpResponse
 
 def index(request):
     blogs = myblogs.objects.all()
-    print(blogs)
+    #print(blogs)
     slides = len(blogs)
     params = {'blogs': blogs, 'range': range(slides), 'slides':slides}
     return render(request, 'shop/index.html', params)
