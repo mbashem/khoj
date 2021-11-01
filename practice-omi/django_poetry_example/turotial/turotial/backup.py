@@ -1,27 +1,13 @@
 import scrapy
 from ..items import TurotialItem
-from scrapy.http import FormRequest
-from scrapy.utils.response import open_in_browser
-
 class QuoteSpider(scrapy.Spider):
     name = 'quotes'
     start_urls = [
-       'https://quotes.toscrape.com/login'
+       'https://quotes.toscrape.com/'
     ]
 
     def parse(self, response):
 
-        token = response.css('form input::attr(value)').extract_first()
-
-        return FormRequest.from_response(response, formdata={
-            'csrf_token' : token,
-            'username' : 'omii',
-            'password' : '123'
-        }, callback = self.start_scraping)
-
-
-    def start_scraping(self, response):
-        open_in_browser(response)
         items = TurotialItem()
 
         all_div_quotes = response.css('div.quote')
@@ -38,5 +24,9 @@ class QuoteSpider(scrapy.Spider):
             yield items
 
 
+        next_page = response.css('li.next a::attr(href)').get()
+
+        if next_page is not None:
+            yield response.follow(next_page, callback=self.parse)
 
 
