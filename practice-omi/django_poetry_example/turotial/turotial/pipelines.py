@@ -16,11 +16,21 @@ class TurotialPipeline:
 
     def __init__(self):
         self.create_connection()
+        self.create_table()
 
 
     def create_connection(self):
         self.conn = sqlite3.connect('myquotes.db')
         self.curr = self.conn.cursor()
+
+
+    def create_table(self):
+        self.curr.execute("""DROP TABLE IF EXISTS quotes_store""")
+        self.curr.execute("""create table quotes_store(
+            texts text,
+            len int
+            
+            )""")
 
 
 
@@ -29,10 +39,9 @@ class TurotialPipeline:
         return item
 
     def store_db(self, item):
-        self.curr.execute("""insert into quotes_table values(?,?,?)""",(
-            item['title'][0],
-            item['author'][0],
-            item['tags'][0]
+        self.curr.execute("""insert into quotes_store values(?,?)""",(
+            item['texts'],
+            item['len']
         ))
 
         self.conn.commit()

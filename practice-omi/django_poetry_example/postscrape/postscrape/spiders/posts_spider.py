@@ -3,7 +3,7 @@ import scrapy
 class postsSpider(scrapy.Spider):
     name = 'posts'
     start_urls = [
-        'https://www.thedailystar.net/',
+        'https://www.dhakatribune.com/',
         # 'https://blog.scrapinghub.com/page/2/'
     ]
 

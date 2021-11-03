@@ -8,7 +8,7 @@ import scrapy
 
 class TurotialItem(scrapy.Item):
     # define the fields for your item here like:
-    title = scrapy.Field()
-    author = scrapy.Field()
-    tags = scrapy.Field()
+    texts = scrapy.Field()
+    len = scrapy.Field()
+
 
