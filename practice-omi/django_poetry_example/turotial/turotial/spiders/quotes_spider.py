@@ -3,7 +3,7 @@ from ..items import TurotialItem
 class QuoteSpider(scrapy.Spider):
     name = 'quotes'
     start_urls = [
-       'https://www.dhakatribune.com/'
+       'https://www.dhakatribune.com/world/2021/11/03/bbc-hasina-among-5-to-impact-cop26-outcomes'
     ]
 
     def parse(self, response):
