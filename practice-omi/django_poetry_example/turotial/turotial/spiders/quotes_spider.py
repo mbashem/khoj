@@ -6,6 +6,10 @@ class QuoteSpider(scrapy.Spider):
        'https://www.dhakatribune.com/world/2021/11/03/bbc-hasina-among-5-to-impact-cop26-outcomes'
     ]
 
+
+
+
+
     def parse(self, response):
 
         items = TurotialItem()
