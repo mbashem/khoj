@@ -190,22 +190,24 @@
          The crawling strategy indicates the type of data and files the software would crawl and fetch data. Users will be able to use the search feature with both text and voice search commands to search from the mobile app but not create clusters.  </p>
         
         
-        <h4 id="sec2.4">2.4 Operating Environments</h4>
-        <p> The operating environment of <b>KHOJ</b> is listed as follows:  <br>
-
-        Write Operating environment here!
-
-        <!-- For listing the attributes -->
-        <ul> <li> Distributed Database </li>
-             <li> Client/Server System </li>
-             <li> Operating System: any system that supports a modern web browser, android version 5.0+ </li>
-             <li> Database Configuration: Django and Google Firebase / SQLite </li>
-             <li> Platform: Web and Android </li>
+         <h4 id="sec2.4">2.4 Operating Environments</h4>
+         <p> The operating environment of <b>KHOJ</b> is listed as follows:  <br>
+ 
+         <!-- For listing the attributes -->
+         <ul> 
+          <li> Platform: Web and Android </li>
+          <li>Web server: Any operation system with Python 3.9 and poetry installed.</li>
+          <li> Client System: Any system with a modern web browser or for android with android version 7.0+</li>
+          <li> Database Configuration: Postgresql  </li>
+          <li> Indexing Server: Solr </li>
         </ul>
-
+ 
 
         <h4 id="sec2.5">2.5 Design and Implementation Constraints</h4>
-        <p> Write design and Implementation constraints here </p>
+        <p> 
+          For mobile, only android is supported for now and users can search both with text and voice in addition to the operations they can do on the web. People using devices with Android versions lower than 7 can not use the android version of this application. For voice search, it relies on google speech to text functionality and will not work if Google is down.
+        </p>
+
         
         
         <h4 id="sec2.6">2.6 User Documentation</h4>
