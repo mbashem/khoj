@@ -274,31 +274,31 @@
         <h2 style="color:#3f5cab;">3. External Interface</h2>
         <h4 id="sec3.1">3.1 User Interfaces</h4>
         <p>The user will be taken to the home page first. There they will be able to login and register here. They can
-          also sign in using Google and then proceed to the task. The user will enter the URL and select the cluster
-          type and depth. The system will begin crawling and collecting data on these URLs. Within the depth
+          also sign in using Google and then proceed to the task. The user will create clusters and enter desired URLs and select the
+          cluster depth. The system will begin crawling and collecting data on these URLs. Within the depth
           limitations, every webpage will be crawled, searched, and the data scraped, processed, and stored. When the
           data is ready, the user will be notified and given the option of utilizing the search engine to get data that
           is relevant to their search. This is intended for people who only need information from a few websites rather
-          than the entire internet.</p>
+          than the entire internet. Upon the search of the user, relevant text will be shown with the url.</p>
 
         <h4 id="sec3.2">3.2 Hardware Interfaces</h4>
         <p> The mobile app version of the software 'KHOJ' might need a microphone to avail text to speech search
           feature. </p>
 
         <h4 id="sec3.3">3.3 Software Interfaces</h4>
-        <p>Khoj mainly relies on the following :
-            Python Scrapy - to crawl,scrape and export the data from webpages. This framework provides a very efficient and easy system to scrape data from the web. When the user provides a URL to KHOJ, this URL will be passed to a crawler in Scrapy which will then start gathering data starting from that URL.
-            Lucene - To index and query the data that Scrapy will export, Lucene will be used which is a Java based library that deals with all sorts of operations relating to text, the two of which KHOJ will use the most are indexing and retrieving data.
-            Apache Solr - This is a search engine, which provides the search capabilities of Lucene via HTTP requests. The scraped data from webpages will be fed to Solr to be stored and indexed. When  the user performs a search, Solr will be used to query the data via HTTP requests and return a response.
-            Django - This will be the framework that will be used to design the main web app
-            Postgresql - This will be the database where KHOJ will store the raw text data that Scrapy will extract.
-</p>
+        <p>'Khoj' mainly relies on the following : <br>
+            <b>Python Scrapy</b> - To crawl, scrape and export the data from webpages. This framework provides a very efficient and easy system to scrape data from the web. When the user provides a URL to 'KHOJ', this URL will be passed to a crawler in Scrapy which will then start gathering data starting from that URL. <br>
+            <b>Lucene</b> - To index and query, the data that Scrapy will export, Lucene will be used which is a Java based library that deals with all sorts of operations relating to text, the two of which 'KHOJ' will use the most are indexing and retrieving data. <br>
+            <b>Apache Solr</b> - This is a search engine, which provides the search capabilities of Lucene via HTTP requests. The scraped data from webpages will be fed to Solr to be stored and indexed. When  the user performs a search, Solr will be used to query the data via HTTP requests and return a response. <br>
+            <b>Django</b> - This will be the framework that will be used to design the main web app. <br>
+            <b>Postgresql</b> - This will be the database where 'KHOJ' will store the raw text data that Scrapy will extract.
+        </p>
 
         <h4 id="sec3.4">3.4 Communications Interfaces</h4>
         <p>
           The application will send data to Solr through Solr API for indexing and querying. From android application
           will communicate through its rest API. From android google speech to text will be used for voice queries. All
-          these communications will happen via HTTP. For authentication google sign in will be used. Security will be
+          these communications will happen via HTTP. For authentication, google sign in will be used. Security will be
           granted by google.
         </p>
 
