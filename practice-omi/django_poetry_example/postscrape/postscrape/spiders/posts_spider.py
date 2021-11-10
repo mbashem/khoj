@@ -50,17 +50,17 @@ class postsSpider(scrapy.Spider):
     #                 'len' : len(var)
     #             }
     #
-
-import scrapy
-from scrapy.crawler import CrawlerProcess
-
-
+#
+# import scrapy
+# from scrapy.crawler import CrawlerProcess
+#
+#
 # class testspider(scrapy.Spider):
 #     name = "testspider"
 #
-#     DEPTH_PRIORITY = 1
-#     SCHEDULER_DISK_QUEUE = 'scrapy.squeues.PickleFifoDiskQueue'
-#     SCHEDULER_MEMORY_QUEUE = 'scrapy.squeues.FifoMemoryQueue'
+#     # DEPTH_PRIORITY = 1
+#     # SCHEDULER_DISK_QUEUE = 'scrapy.squeues.PickleFifoDiskQueue'
+#     # SCHEDULER_MEMORY_QUEUE = 'scrapy.squeues.FifoMemoryQueue'
 #
 #     start_urls = [
 #         'https://quotes.toscrape.com/page/1/'
@@ -72,6 +72,7 @@ from scrapy.crawler import CrawlerProcess
 #     def parse(self, response, cnt):
 #
 #         yield {'url': response.url, 'depth': cnt}
+#
 #         print('THE CURRENT URL IS ' + response.url)
 #
 #         for txt in response.css("::text"):
@@ -86,19 +87,19 @@ from scrapy.crawler import CrawlerProcess
 #                 if nextpage is not None:
 #                     print('THE URL IS ' + response.urljoin(nextpage))
 #                     yield scrapy.Request(response.urljoin(nextpage), callback=self.parse, cb_kwargs=dict(cnt=cnt + 1))
+
+
+# process = CrawlerProcess(settings={
+#     "FEEDS": {
+#         "scrapped.json": {"format": "json"},
+#     },
+# })
 #
+# process.crawl(testspider)
+# print("Starting crawl")
+# process.start()
+# print("Crawl ended")
 #
-# # process = CrawlerProcess(settings={
-# #     "FEEDS": {
-# #         "scrapped.json": {"format": "json"},
-# #     },
-# # })
-# #
-# # process.crawl(testspider)
-# # print("Starting crawl")
-# # process.start()
-# # print("Crawl ended")
-#
-#
-#
-#
+
+
+
