@@ -286,9 +286,13 @@
           feature. </p>
 
         <h4 id="sec3.3">3.3 Software Interfaces</h4>
-        <p>Both the mobile application and the website will communicate with the database via internet. The operating
-          system will provide such interfaces. Both the platforms will consist of operations regarding read and write of
-          data.</p>
+        <p>Khoj mainly relies on the following :
+            Python Scrapy - to crawl,scrape and export the data from webpages. This framework provides a very efficient and easy system to scrape data from the web. When the user provides a URL to KHOJ, this URL will be passed to a crawler in Scrapy which will then start gathering data starting from that URL.
+            Lucene - To index and query the data that Scrapy will export, Lucene will be used which is a Java based library that deals with all sorts of operations relating to text, the two of which KHOJ will use the most are indexing and retrieving data.
+            Apache Solr - This is a search engine, which provides the search capabilities of Lucene via HTTP requests. The scraped data from webpages will be fed to Solr to be stored and indexed. When  the user performs a search, Solr will be used to query the data via HTTP requests and return a response.
+            Django - This will be the framework that will be used to design the main web app
+            Postgresql - This will be the database where KHOJ will store the raw text data that Scrapy will extract.
+</p>
 
         <h4 id="sec3.4">3.4 Communications Interfaces</h4>
         <p>
