@@ -1,0 +1,13 @@
+
+@media print{
+
+
+.dropdown {
+	display: none;
+}
+
+.newpage{
+	page-break-before: always;
+}
+
+}
