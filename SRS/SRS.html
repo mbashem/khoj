@@ -422,8 +422,8 @@
           <li> <b> Goal </b> : To get URLs to webpages that contain the search keywords </li>
         </p>
 
-        <p> <b> Overview </b>: After one or more search clusters have been made, a user may perform a search over the data stored in a cluster. After the user enters a string into the 
-        search bar, the system will use its text searching capabilities to go through the data that belongs to this cluster and return URLs to webpages that contain words from the string
+        <p> <b> Overview </b>: After one or more search clusters have been made, a user may perform a search on the clusters. After the user enters a string into the 
+        search bar, the system will use its text searching capabilities to go through the data that belongs to the selected clusters and return URLs to webpages that contain words from the string
         provided by the user.</p>
 
         <p> <b> Cross Reference </b> : 4.3 </p>
@@ -525,43 +525,11 @@
 
         <h2 style="color:#3f5cab;">5. Other Nonfunctional Requirements</h2>
         <h4 id="sec5.1"> 5.1 Performance Requirements</h4>
-        <p>Any Interface between a user and software shall have reasonable response time based on Intranet connection
-        </p>
-        <b>5.1.1 Prominent search feature</b><br>
-        <b>ID: FRN1</b><br>
-        TITLE: Prominent search feature<br>
-        OVERVIEW: The search feature should be prominent and easy to find for the user.<br>
-        PURPOSE: In order to find the search feature easily for a user.<br>
-        DEP: none<br><br>
-
-
-
-        <b>5.1.2 Usage of the Google API</b><br>
-        <b>ID: FRN2</b><br>
-        TITLE: Usage of the API<br>
-        OVERVIEW: Using Google Text to speech and Speech to text API's <br>
-        PURPOSE: To convert the user voice into text and use the text for search, and also using Speech to text for
-        listening the news article <br>
-        DEP: none<br><br>
-
-        <b>5.1.3 Response time</b><br>
-        <b>ID: FRN3</b><br>
-        TAG: ResponseTime<br>
-        GIST: The fastness of the search<br>
-        SCALE: The response time of a search<br>
-        METER: Measurements obtained from 1000 searches during testing.<br>
-        MUST: No more than 2 seconds 100% of the time.<br>
-        WISH: No more than 1 second 100% of the time.<br><br>
-
-        <b>5.1.4 System dependability</b><br>
-        <b>ID: FRN4</b><br>
-        TAG: SystemDependability<br>
-        GIST: The fault tolerance of the system.<br>
-        SCALE: If the system loses the connection to the Internet or missing any sensor, the user should be
-        informed.<br>
-        METER: Measurements obtained from 1000 hours of usage during testing.<br>
-        MUST: 100% of the time.<br><br>
-        </p>
+        <p><b>Text search: </b>When searching through a cluster,the system should not take more than a few seconds to start returning results. Users might often have many
+          things to search for, so each search operation needs to be very quick or else the user's experience may not be satisfactory.<br>
+          <b>Data: </b> Large volumes of data can be scraped off of websites so the system needs to be able to handle this.<br>
+            <b>Mobile App: </b> Needs to be lightweight and responsive.<br>
+            <b>Database: </b>Needs to be suited for handling the raw data that will be scraped. If this is slow it might bottleneck the whole system.</p> 
 
         <h4 id="sec5.2"> 5.2 Safety Requirements</h4>
         <p>To ensure no data is lost in case the user decides to change devices or if the user's device is extensively
