@@ -529,7 +529,8 @@
           things to search for, so each search operation needs to be very quick or else the user's experience may not be satisfactory.<br>
           <b>Data: </b> Large volumes of data can be scraped off of websites so the system needs to be able to handle this.<br>
             <b>Mobile App: </b> Needs to be lightweight and responsive.<br>
-            <b>Database: </b>Needs to be suited for handling the raw data that will be scraped. If this is slow it might bottleneck the whole system.</p> 
+            <b>Database: </b>Needs to be suited for handling the raw data that will be scraped. If this is slow it might bottleneck the whole system.<br>
+            <b>Crawling and scraping: </b>It is expected that the system will have the data ready withing 24 hours of creating the cluster.</p> 
 
         <h4 id="sec5.2"> 5.2 Safety Requirements</h4>
         <p> The URLs that the user provides to the system to be crawled has to be provided by the own risk of the user. The user has to make sure 
@@ -551,12 +552,10 @@
         <h4 id="sec5.4"> 5.4 Software Quality Attributes</h4>
         <p>The software quality attributes of our app - is listed below:
         <ul>
-          <li> <strong>AVAILABILITY : </strong> As the system will be hosted in cloud servers it will be available all
-            the time for users. </li>
-          <li> <strong>CORRECTNESS:</strong> The system will pull appropriate information from the receipt images and
-            use Googleâ€™s Vision API to provide accurate information based on the users request
+          <li> <strong>AVAILABILITY : </strong> Since it will be an online system it needs to be regularly available to the user.  </li>
+          <li> <strong>Flexibility:</strong> The system needs to very flexible so that new crawling strategies can be easily implemented.
           </li>
-          <li><strong> MAINTAINABILITY:</strong> The system will store and maintain all uploaded copies of the receipts.
+          <li><strong> USABILITY:</strong> The user should have no trouble navigating and using the system.
           </li>
         </ul>
 
