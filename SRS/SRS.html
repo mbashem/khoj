@@ -532,35 +532,22 @@
             <b>Database: </b>Needs to be suited for handling the raw data that will be scraped. If this is slow it might bottleneck the whole system.</p> 
 
         <h4 id="sec5.2"> 5.2 Safety Requirements</h4>
-        <p>To ensure no data is lost in case the user decides to change devices or if the user's device is extensively
-          damaged all data will be stored in google cloud storages. This will allow safe storage and easy accessibility
-          from anywhere.</p>
+        <p> The URLs that the user provides to the system to be crawled has to be provided by the own risk of the user. The user has to make sure 
+        that the URLs allow the system to crawl and scrape data. </p>
+
+
+
         <h4 id="sec5.3"> 5.3 Security Requirements</h4>
-        <p>The System shall not disclose any personal information about the users. The Application shall not grant
+        <p>The system shall not disclose any personal information about the users. The Application shall not grant
           access to an unauthorized user and the Application shall not communicate with any other devices or servers
-          while in use by the user.<br>In addition to that users must refrain from uploading any sensitive information
-          such as credit card info, id or any personal information that is not required.</p>
-        <p><b>5.3.1 Communication Security</b><br>
-          <b>ID: FRN5</b><br>
-          TAG: CommunicationSecurity<br>
-          GIST: Security of the communication between the system and server.<br>
-          SCALE: The messages should be encrypted for log-in communications, so others cannot get user-name and password
-          from those messages.<br>
-          METER: Attempts to get user-name and password through obtained messages on 1000 log-in session during
-          testing.<br>
-          MUST: 100% of the Communication Messages in the communication of a log-in session should be encrypted.<br>
-          Communication Messages: Defined: Every exchanged of information between client and server.<br><br>
+          while in use by the user. The system will preserve the copyright of the content that has been crawled and indexed
+          since it will not show the data that has been crawled rather refer to the URL source of the data to the user.
+          Moreover, if any URL has a policy to prevent scraping the data, the system would not crawl or scrape that URL.
+           </p>
+        
 
 
-          <b>5.3.4 User Account Security</b><br>
-          <b>ID: FRN6</b><br>
-          TAG: UserCreateAccountSecurity<br>
-          GIST: The security of creating account for users of the system.<br>
-          SCALE: If a user wants to create an account and the desired user name is occupied, the user should be asked to
-          choose a different user name.<br>
-          METER: Measurements obtained on 1000 hours of usage during testing.<br>
-          MUST: 100% of the time.<br><br>
-        </p>
+
         <h4 id="sec5.4"> 5.4 Software Quality Attributes</h4>
         <p>The software quality attributes of our app - is listed below:
         <ul>
@@ -579,89 +566,27 @@
           <br><br><br>
 
           <h2 id="sec6" style="color:#3f5cab;">6. Appendix</h2>
-          <h4 id="section6">Appendix : Glossary</h4>
           <h2 id="appendixA">Appendix A: Glossary</h2>
           <p>Definitions, acronyms, and abbreviations are listed below:<br>
 
-          <table border="1" cellspacing="0" cellpadding="1">
-            <tr>
-              <th>Term</th>
-              <th>Definition</th>
-            </tr>
+          
 
-            <tr>
-              <td>User</td>
-              <td>Someone who interacts with the mobile phone application</td>
-            </tr>
-            <tr>
-              <td>Admin/Administrator</td>
-              <td>System administrator who is given specific permission for managing and controlling the system</td>
-            </tr>
-            <tr>
-              <td>User</td>
-              <td>Someone who can see news</td>
-            </tr>
-            <tr>
-              <td>Admin</td>
-              <td>fsdafsadfsdf</td>
-            </tr>
-            <tr>
-              <td>DEP</td>
-              <td>Dependency</td>
-            </tr>
-            <tr>
-              <td>PFR</td>
-              <td>Primary Functional Requirements</td>
-            </tr>
-            <tr>
-              <td>SFR</td>
-              <td>Secondary Functional Requirements</td>
-            </tr>
-            <tr>
-              <td>TAG</td>
-              <td>A unique, persistent identifier contained in a PLanguage statement [2]</td>
-            </tr>
-            <tr>
-              <td>GIST</td>
-              <td>A short description to help understanding [2]</td>
-            </tr>
-            <tr>
-              <td>SCALE</td>
-              <td>The scale of measurement used to quantify the statement [2]</td>
-            </tr>
-            <tr>
-              <td>METER</td>
-              <td>The process or device used to measure using the SCALE [2]</td>
-            </tr>
-            <tr>
-              <td>MUST</td>
-              <td>The minimum level required to avoid failure [2]</td>
-            </tr>
-            <tr>
-              <td>PLAN</td>
-              <td>The level at which success can be claimed [2]</td>
-            </tr>
-            <tr>
-              <td>WISH</td>
-              <td>A desirable level of achievement [2]</td>
-            </tr>
-
-          </table>
-
-          <li>API: Application Protocol Interface. This is the part of a program that lets other programs or services
+          <li> <b> API </b>: Application Protocol Interface. This is the part of a program that lets other programs or services
             interact with the data in the former and viceversa.
-          <li>Framework: It is like the base of a program that provides generic functionality but can be custom built
-            for specific purposes
-          <li>Backend: The part of an app service that works behind the scenes away from the user's device, usually in
-            the cloud (server computer owned by the company)
-          <li>Proprietary: Owned by that particular company/person etc
-          </li>
-          <br>
+          <li> <b> Framework </b>: It is like the base of a program that provides generic functionality but can be custom built
+            for specific purposes.
+          <li> <b> Backend</b>: The part of an app service that works behind the scenes away from the user's device, usually in
+            the cloud (server computer owned by the company).
+          
+      
+          <br> <br> 
 
+
+          <h2 id="appendixA">Appendix B: Analysis Models </h2>
+          <p> Not available at this moment. </p>
 
           <div style="padding-top:20px;" class="row">
           </div>
-
       </div>
     </div>
   </div>
