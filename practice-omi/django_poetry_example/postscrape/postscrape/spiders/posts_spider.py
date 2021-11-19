@@ -1,38 +1,39 @@
 import scrapy
 
+
 class postsSpider(scrapy.Spider):
     name = 'posts'
     start_urls = [
         'http://localhost/Crawl_check/p1.html',
 
     ]
-
+    DEPTH_LIMIT = 1
+    SCHEDULER_DISK_QUEUE = 'scrapy.squeues.PickleFifoDiskQueue'
+    SCHEDULER_MEMORY_QUEUE = 'scrapy.squeues.FifoMemoryQueue'
+    #
     # def start_requests(self):
-    #     return [scrapy.Request('http://localhost/Crawl_check/p1.html', callback=self.parse)]
+    #     return scrapy.Request('http://localhost/Crawl_check/p1.html', callback=self.parse)
 
     def parse(self, response):
 
-        yield {
-            'url': response.url,
-            # 'depth': cnt
-        }
+            yield {'url': response.url}
+            print('THE CURRENT URL IS ' + response.url)
 
-        for post in response.css('::text'):
-            var = post.get().strip()
+            for txt in response.css("::text"):
+                var = txt.get().strip()
+                if len(var) != 0:
+                    yield {'text': var}
 
-            if len(var) != 0:
-                yield {
-                    'text' : var.strip(),
-                    'len' : len(var)
-                }
+            #if (cnt < 10):
 
-        for link in response.css('a::attr(href)'):
-                yield from response.follow_all(link.get(), callback=self.parse)
+            for nextpage in response.css('a::attr(href)'):
+                nextpage = nextpage.get()
+                if nextpage is not None:
+                    print('THE URL IS ' + response.urljoin(nextpage))
+                    yield scrapy.Request(response.urljoin(nextpage), callback=self.parse)
 
-
-
-
-
+                        # for link in response.css('a::attr(href)'):
+        #         yield from response.follow_all(link.get(), callback=self.parse)
 
     # def parse(self, response):
     #
@@ -100,6 +101,3 @@ class postsSpider(scrapy.Spider):
 # process.start()
 # print("Crawl ended")
 #
-
-
-
