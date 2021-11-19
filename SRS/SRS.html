@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>System Requirement Specification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="src/index.css">
+  <link rel="stylesheet" href="src/print.css" media="print">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+      position: relative;
+    }
+
+    ul.nav-pills {
+      position: fixed;
+    }
+
+    div.col-8 div {
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body style="background-color:#FFFFFF; color:black;" data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+  <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+    <!-- Brand/logo -->
+    <img src="src/logo.jpg" alt="KotoUI" style="width:10%"></img>
+    <header class="page header text-black">
+      <h1 style="padding-left:100px;">System Requirement Specification </h1>
+    </header>
+
+    <!-- Links -->
+
+
+    </ul>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-sm-2 col-4 bg-dark" id="myScrollspy">
+        <ul class="nav nav-pills flex-column">
+          <div class="dropdown">
+            <a style="color: white;" href="#sec1.1" class="dropbtn">Introduction</a>
+            <div class="dropdown-content">
+              <a href="#sec1.1">Purpose</a>
+              <a href="#sec1.2">Document Convention</a>
+              <a href="#sec1.3">Intended Audience and Reading Suggestions</a>
+              <a href="#sec1.4">Product Scope</a>
+              <a href="#sec1.5">References</a>
+
+            </div>
+          </div>
+          <br>
+          <div class="dropdown">
+            <a style="color: white;" href="#sec2.1" class="dropbtn">Overall Description</a>
+            <div class="dropdown-content">
+              <a href="#sec2.1">Product Perspective</a>
+              <a href="#sec2.2">Product Functions</a>
+              <a href="#sec2.3">User Classes and Characteristics</a>
+              <a href="#sec2.4">Operating Environment</a>
+              <a href="#sec2.5">Design and Implementation Constraints</a>
+              <a href="#sec2.6">User Documentation</a>
+              <a href="#sec2.7">Assumptions and Dependencies</a>
+
+            </div>
+          </div>
+          <br>
+          <div class="dropdown">
+            <a style="color: white;" href="#sec3.1" class="dropbtn">External Interface and Requirements</a>
+            <div class="dropdown-content">
+              <a href="#sec3.1">User Interfaces</a>
+              <a href="#sec3.2">Hardware Interfaces</a>
+              <a href="#sec3.3">Software Interfaces</a>
+              <a href="#sec3.4">Communications Interfaces</a>
+
+
+            </div>
+          </div>
+          <br>
+          <div class="dropdown">
+            <a style="color: white;" href="#sec4.1" class="dropbtn">System Features</a>
+            <div class="dropdown-content">
+              <a href="#sec4.1">Sign Up</a>
+              <a href="#sec4.2">Log In</a>
+              <a href="#sec4.3">Create Clusters</a>
+              <a href="#sec4.4">Perform Text Search</a>
+              <a href="#sec4.5">Perform Voice Search</a>
+              <a href="#sec4.6">Log Out</a>
+              <a href="#sec4.7">Install Plugins</a>
+            </div>
+          </div>
+          <br>
+          <div class="dropdown">
+            <a style="color: white;" href="#sec5.1" class="dropbtn">Other Nonfunctional Requirements</a>
+            <div class="dropdown-content">
+              <a href="#sec5.1">Performance Requirements</a>
+              <a href="#sec5.2">Safety Requirements</a>
+              <a href="#sec5.3">Security Requirements</a>
+              <a href="#sec5.4">Software Quality Attributes</a>
+              <a href="#sec5.5">Business Rules</a>
+
+            </div>
+          </div>
+          <br>
+          <div class="dropdown">
+            <a style="color: white;" href="#sec6" class="dropbtn">Appendix</a>
+
+          </div>
+
+
+        </ul>
+      </nav>
+
+      <div style="padding-top:30px; padding-left:30px; padding-right:150px;" class="col-sm-10 col-8">
+
+
+   <p>
+           <h2 align="right" style="color:#3f5cab">  Software Requirements Specification </h2> <br> <br> 
+                   
+            <h5 align="right" id="sec1.1">  for <br> <br> </h5>
+
+            <h4 align="right" id="sec1.1">  <KHOJ> <br> KHOJ <br> </h4> <br>
+             <h5 align="right" id="sec1.1">  Version 1.0 approved <br> <br>
+            Prepared by <br><br><br>
+            Mohammed Bashem - 2012667642<br><br>
+            Khundker Mohammad Sarwar Khalid -  2011625642 <br><br>
+            Farhan Ishraq Omi  2012842642<br><br>
+            Maisha Amin - 2013788642 <br><br>
+            North South University <br><br>
+            16/11/2021<br><br>
+              
+               </h5>
+
+          <div class="newpage">
+
+
+        <h2 style="color:#3f5cab">  Table of Contents <br> <br> </h2>
+
+        <h4 id="sec1.1">1.  Introduction</h4>    
+        <p>
+         1.1 Purpose -------------------------------------------------------------------------- 4<br>
+         1.2 Document Conventions --------------------------------------------------------- 4<br>
+         1.3 Intended Audience and Reading Suggestions --------------------------------- 4<br>
+         1.4 Product Scope ------------------------------------------------------------------- 4<br>
+         1.5 References ----------------------------------------------------------------------- 4<br>
+       </p> 
+</div> 
+<br> <br>
+       <h4 id="sec1.1">2.  Overall Description  </h4>    
+       <p>2.1 Product Perspective--------------------------------------------------------------- 4<br>
+        2.2 Product Functions ---- ----------------------------------------------------------- 4<br>
+        2.3 User Classes and Characteristics ------------------------------------------------- 4<br>
+        2.4 Operating Environment ---------------------------------------------------------- 5<br>
+        2.5 Design and Implementation Constraints ---------------------------------------- 5<br>
+        2.6 User Documentation ------------------------------------------------------------- 5<br>
+        2.7 Assumptions and Dependencies ------------------------------------------------- 5<br>
+      </p> 
+
+      <h4 id="sec1.1">3.  External Interface Requirements </h4>    
+      <p>3.1 User Interfaces -------------------------------------------------------------------- 5<br>
+         3.2 Hardware Interfaces -------------------------------------------------------------- 6 <br>
+        3.3 Software Interfaces --------------------------------------------------------------- 6  <br>       
+        3.4 Communications Interfaces ------------------------------------------------------ 6 <br>
+      </p> 
+
+
+      <h4 id="sec1.1"> 4.  System Features</h4>    
+      <p> 4.1 System Feature 1 ----------------------------------------------------------------- 6  <br>
+        4.2 System Feature 2 (and so on)----------------------------------------------------- 7 <br>
+      </p> 
+
+
+      <h4 id="sec1.1"> 5.  Other Nonfunctional Requirements </h4>    
+      <p>5.1 Performance Requirements-------------------------------------------------------- 9 <br>
+        5.2 Safety Requirements -------------------------------------------------------------- 10<br>
+        5.3 Security Requirements ------------------------------------------------------------ 10 <br>
+        5.4 Software Quality Attributes ------------------------------------------------------- 11<br>
+        5.5 Business Rules  --------------------------------------------------------------------- 11 <br>
+      </p> 
+
+
+      <h4 id="sec1.1"> 6.  Other Requirements </h4>    
+      <p> Appendix A: Glossary  ------------------------------------------------------------------ 11<br>
+        Appendix B: Analysis Models ---------------------------------------------------------- 11<br>
+        Appendix C: To Be Determined List ---------------------------------------------------- 11 <br>
+      </p> 
+
+
+    </p>
+         <div class="newpage">
+
+
+        <h2 style="color:#3f5cab">1. Introduction</h2>
+
+        <p> The introduction of the Software Requirements Specification (SRS) provides an overview of the entire SRS
+          with purpose, scope, definitions, acronyms, abbreviations, references, and an overview of the SRS.
+          The detailed requirements of the software ‘KHOJ’ are provided in this document. </p>
+</div>
+        <h4 id="sec1.1">1.1 Purpose</h4>
+        <p>
+          The purpose of this SRS document is to provide a detailed overview of our software product ‘KHOJ’, its
+          parameters, and goals. This document describes the project's
+          target audience and its user interface, hardware and software requirements. Moreover, this document describes
+          the usage of our software and required functionality
+          lucidly so that the clients and involved developers can easily comprehend the project and what to do if
+          anything needs to be changed.
+        </p>
+
+        <h4 id="sec1.2">1.2 Document Convention</h4>
+
+        <p>
+          The SRS contains italic and bold text and some diagrams like ER diagrams and UML diagrams. There are several
+          main topics. Under the main topic, there are some subtopics numbered 1-9. The subtopic contains some
+          explanations. A detailed description of the font style is provided below:
+          <br>
+          <b> Main Topics: </b> Font Name: Calibri, Font Style: Bold, Size: 18 <br>
+          <b> Sub Topics:</b> Font Name: Calibri, Font Style: Bold, Size: 14 <br>
+          <b> Other Explanations:</b> Font Name: Calibri, Font Style: Normal, Size: 12 <br>
+
+
+
+        </p>
+
+        <h4 id="sec1.3">1.3 Intended Audience and Reading Suggestions</h4>
+
+        <p>
+          This SRS document's intended audience includes clients, the developer team, researchers, business analysts,
+          and the project manager. With its excellent overview, this SRS will provide readers with a thorough
+          understanding of the finer details of this project. For example, the clients will have clear instructions on
+          how to handle the project (website/app). By understanding the project's theme, business analysts will be able
+          to plan their marketing and promotion more effectively. The document is written in simple English for a wide
+          range of audiences. Last but not least, the developer team will be benefited the most from the document
+          because they need to know every detail about the software. This document explains who this software is for,
+          how and where it will be used, and what it can accomplish. It is suggested that the SRS be read in order using
+          the index provided above.
+
+        </p>
+
+
+        <h4 id="sec1.4">1.4 Product Scope</h4>
+
+        <p>
+
+          The purpose of KHOJ is to provide search engine capabilities that are confined to a specified domain.
+          The user will provide a set of URLs that will be the basis of the search. The user can also provide the depth
+          of the search. KHOJ will start crawling through these URLs and collect the data (whose type can also be
+          specified by the user). Every webpage that is within the depth constraints will be searched,crawled and their
+          data scraped,processed and stored.
+          After the data is ready the user will be notified and will be given the ability to use the search engine to
+          retrieve data relevant to what the user is looking for.
+          KHOJ is mainly aimed at researchers who need information from certain websites rather than the whole internet.
+          We hope that the targeted searching capabilities will save time and allow our users to gather relevant
+          information in a better way.
+
+
+
+        </p>
+        <div class="newpage">
+
+        <h4 id="sec1.5">1.5 References</h4>
+
+        <a href="https://docs.djangoproject.com/en/3.2/">Django</a><br>
+        <a href="https://solr.apache.org/guide/8_10/introduction-to-solr-indexing.html">Apache Solr</a><br>
+        <a href="https://docs.scrapy.org/en/latest/">Scrapy </a><br>
+        <a href="https://developer.android.com/docs">Android</a><br>
+        <a href="https://cloud.google.com/speech-to-text#section-6">Google Speech To Text</a><br>
+        <a href="https://www.postgresql.org/docs">PostgreSQL</a><br>
+
+
+        <br><br><br>2
+      </div>
+
+        <!-- Descriptions edited -->
+
+        <h2 style="color:#3f5cab;">2. Overall Description</h2>
+        <p>This section deals with a broad overview of the product 'KHOJ' as a search engine, explaining the
+          functionalities and goals that the software aims to achieve. It also provides details on the dependencies,
+          constraints, operating environment of the product along with user classes and user manuals.</p>
+
+        <h4 id="sec2.1">2.1 Product Perspective</h4>
+        <p> This product is a self-contained product. It mainly originated from the need of certain users to search data
+          confined to a limited domain, unlike Google or Bing where searches are done across their whole database. KHOJ
+          aims to provide a fast and fluid system to allow our users to get the data they actually need in a reasonable
+          amount of time. </p>
+
+        <h4 id="sec2.2">2.2 Product Functions</h4>
+        <p>The product functions are user dependent as the perspective of this app is to make it easier for the user to search data within the user provided URLs. Admins function is to create new crawling strategies as plugins. Builtin crawling strategies will be all .txt files, PDF files, MS-Word files, non-HTML files etc meaning that 
+        the user wants to search the data in these files inside the given URLS. In order to make the functions comprehensible, a use case diagram of the user and admin is demonstrated below - </p>
+        <img src="src/UseCase327.jpg" alt="KotoUI" style="width:60%">
+        <p style="font-size:90%"><i>
+            <center>Figure: Actors and the Use-cases
+          </i></center>
+        </p>
+
+
+
+        <h4 id="sec2.3">2.3 User Classes and Characteristics</h4>
+        <p> The user can access the software ‘KHOJ’ from two different platforms: Web and Android App. There are 2 kinds
+          of actors for the software who are the Users, and the admin. Users can access the software from both the web
+          and phone app but admin can only access it through the web. Both the actors need to sign in first to use the
+          software. The only job of an admin is to add new crawling strategies as a plugin. The users can create and use
+          search clusters. A search cluster consists of several URLs with one or more crawling strategies and
+          search-depth.
+          The crawling strategy indicates the type of data and files the software would crawl and fetch data. Users will
+          be able to use the search feature with both text and voice search commands to search from the mobile app but
+          not create clusters. </p>
+
+
+
+          
+
+
+        <h4 id="sec2.4">2.4 Operating Environments</h4>
+        <p> The operating environment of <b>KHOJ</b> is listed as follows: <br>
+
+          <!-- For listing the attributes -->
+        <ul>
+          <li> Platform: Web and Android </li>
+          <li>Web server: Any operation system with Python 3.9 and poetry installed.</li>
+          <li> Client System: Any system with a modern web browser or for android with android version 7.0+</li>
+          <li> Database Configuration: Postgresql </li>
+          <li> Indexing Server: Solr </li>
+        </ul>
+
+
+        <h4 id="sec2.5">2.5 Design and Implementation Constraints</h4>
+        <p>
+          For mobile, only android is supported for now and users can search both with text and voice in addition to the
+          operations they can do on the web. People using devices with Android versions lower than 7 can not use the
+          android version of this application. For voice search, it relies on google speech to text functionality and
+          will not work if Google is down.
+        </p>
+
+
+
+        <h4 id="sec2.6">2.6 User Documentation</h4>
+        <p>The product will provide users with basic running instructions. and A short tutorial video that shows how to
+          use the entire software.</p>
+
+        <h4 id="sec2.7">2.7 Assumptions and Dependencies</h4>
+        <p>To utilize the system, the user must have a working internet connection. For web users, there must be a
+          browser to access the product. The phone user must also have a minimum of Android version 7 installed. It may
+          take up to 24 hours for a cluster to become usable after it has been created with the URLs.The user will be
+          notified via email when the cluster is ready. This product, once again, is reliant on the Google sign-in
+          platform's API and Google speech to text API. The product could be affected if these assumptions are
+          incorrect, are not shared, or change.</p>
+        <br><br><br>
+
+
+        <h2 style="color:#3f5cab;">3. External Interface</h2>
+        <h4 id="sec3.1">3.1 User Interfaces</h4>
+        <p>The user will be taken to the home page first. The user will be able to log in and register with Google credentials. There are two ways to use this system. Searching by text and creating clusters to add links are the two approaches.  For creating clusters, there will be a form. The user will add links to that cluster by filling out the form with necessary information such as depth.  It could take a maximum of 24 hours to crawl and collect the specific data. When the data is ready, the user will be notified through email. For searching by text, a search box will appear to the user. Then they will enter the text and select the clusters that users have added. The system will show some part of the corresponding text result with the URLs.then. To exit from the system, there will be a Log out button.</p>
+         
+          <div class="newpage">
+        <h4 id="sec3.2">3.2 Hardware Interfaces</h4>
+        <p> The mobile app version of the software 'KHOJ' might need a microphone to avail text to speech search
+          feature. </p>
+          </div>
+        <h4 id="sec3.3">3.3 Software Interfaces</h4>
+        <p>'Khoj' mainly relies on the following : <br>
+            <b>Python Scrapy</b> - To crawl, scrape and export the data from webpages. This framework provides a very efficient and easy system to scrape data from the web. When the user provides a URL to 'KHOJ', this URL will be passed to a crawler in Scrapy which will then start gathering data starting from that URL. <br>
+            <b>Lucene</b> - To index and query, the data that Scrapy will export, Lucene will be used which is a Java based library that deals with all sorts of operations relating to text, the two of which 'KHOJ' will use the most are indexing and retrieving data. <br>
+            <b>Apache Solr</b> - This is a search engine, which provides the search capabilities of Lucene via HTTP requests. The scraped data from webpages will be fed to Solr to be stored and indexed. When  the user performs a search, Solr will be used to query the data via HTTP requests and return a response. <br>
+            <b>Django</b> - This will be the framework that will be used to design the main web app. <br>
+            <b>Postgresql</b> - This will be the database where 'KHOJ' will store the raw text data that Scrapy will extract.
+        </p>
+
+        <h4 id="sec3.4">3.4 Communications Interfaces</h4>
+        <p>
+          The application will send data to Solr through Solr API for indexing and querying. From android application
+          will communicate through its rest API. From android google speech to text will be used for voice queries. All
+          these communications will happen via HTTP. For authentication, google sign in will be used. Security will be
+          granted by google.
+        </p>
+
+        <br><br><br>
+
+        <!--System Features-->
+        <h2 style="color:#3f5cab;">4. System Features</h2>
+        <p>The system features stated below are the core building blocks for the 'KHOJ' application. </p>
+
+
+
+        <h4 id="sec4.1">4.1 Sign up</h4>
+
+
+        <strong>Stimulus/ Response Sequences</strong>
+        <p>The following expanded use case shows the response sequences between the actor actions and the system
+          responses.
+          <li> <b> Use Case </b> :  Sign up  </li>
+          <li> <b> Preconditions </b> : The user must have a google account </li>
+          <li> <b> Actors </b> : User </li>
+          <li> <b> Goal </b> : To create an account for using the system </li>
+        </p>
+
+        <p> <b> Overview </b>: To use the system the user needs to sign up. By using Google sign-in platform's API users can easily sign up.  </p>
+
+        <p> <b> Cross Reference </b> : Not applicable. </p>
+
+        <b> Typical Course of Events: </b> <br>
+
+        <img src="src/Usecase-sign-up.png" alt="KotoUI" style="width:75%"> <!-- Table 1.0 -->
+        <p style="font-size:90%"><i>Table 1.0 : Typical Course of Events </i></p>
+
+        <p> <b> Alternate Course of Actions </b>:  <br>
+         <b> Steps 4 and 5 </b> - The user may enter incorrect Google account credentials. As a result, the user will be returned to the sign-up page.  </p>
+        
+        <p>
+          <b>Exception</b>:
+            <ul>
+                <li> If Google is down, the user is unable to sign up. </li>
+            </ul>
+           
+        </p>
+
+
+
+
+
+        <h4 id="sec4.2">4.2 Login</h4>
+
+
+        <strong>Stimulus/ Response Sequences</strong>
+        <p>The following expanded use case shows the response sequences between the actor actions and the system
+          responses.
+          <li> <b> Use Case </b> : Login </li>
+          <li> <b> Preconditions </b> : The user must register or sign up first to login to the system. </li>
+          <li> <b> Actors </b> : User </li>
+          <li> <b> Goal </b> : Log into a user's account. </li>
+        </p>
+
+        <p> <b> Overview </b>: A user has to login to the system first to use the features of the system.
+        For login, a user can use google account credentials. Once logged in, a user is ready to create clusters and make search 
+        attempts within the created clusters to get desired search results. </p>
+
+        <p> <b> Cross Reference </b> : Not applicable. </p>
+
+        <b> Typical Course of Events: </b> <br>
+
+        <img src="src/UseCaselogin.jpg" alt="KotoUI" style="width:75%"> <!-- Table 2.0 -->
+        <p style="font-size:80%"><i>Table 2.0 : Typical Course of Events </i></p>
+
+        <p> <b> Alternate Course of Actions </b>:  <br>
+        <b> Steps 4 and 5 </b> - The user might provide wrong credentials of Google account. So, the user will be taken back to login page again. </p>
+        
+        
+        
+        <p>
+          <b>Exception</b>:
+            <ul>
+                <li> If Google is down, the user is unable to login. </li>
+            </ul>
+           
+        </p>
+
+
+        <h4 id="sec4.3">4.3 Create Clusters </h4>
+
+
+        <strong>Stimulus/ Response Sequences</strong>
+        <p>The following expanded use case shows the response sequences between the actor actions and the system
+          responses.
+          <li> <b> Use Case </b> : Create Clusters  </li>
+          <li> <b> Preconditions </b> : User must be logged in to an account </li>
+          <li> <b> Actors </b> : User </li>
+          <li> <b> Goal </b> : To create a cluster of URLs that will be scraped for the user to use later</li>
+        </p>
+
+        <p> <b> Overview </b>: To create a cluster of URLs of which the user may perform searches, the user has to input one or more URLs and can assign 
+        a depth to which the URL will be searched. The user can also specify the type of data that the system should find/look through. Afterwards the system 
+        will crawl and scrape the data according to the rules set by the user.</p>
+
+        <p> <b> Cross Reference </b> : None  </p>
+
+        <b> Typical Course of Events: </b> <br>
+
+        <img src="src/Expanded Use Case - Create a cluster.png" alt="KotoUI" style="width:75%"> <!-- Table 1.0 -->
+        <p style="font-size:90%"><i>Table 3.0 : Typical Course of Events </i></p>
+
+        <p> <b> Alternate Course of Actions </b>:  <br>
+        <b> Step 4 and 5 - </b>User might enter the same link twice. The system will alert the user if this happens.</p>
+        
+        
+
+        <h4 id="sec4.4">4.4 Perform Search (through text) </h4>
+
+        <strong>Stimulus/ Response Sequences</strong>
+        <p>The following expanded use case shows the response sequences between the actor actions and the system
+          responses.
+          <li> <b> Use Case </b> : Perform search (through text)  </li>
+          <li> <b> Preconditions </b> : Have a cluster to search on </li>
+          <li> <b> Actors </b> : User </li>
+          <li> <b> Goal </b> : To get URLs to webpages that contain the search keywords </li>
+        </p>
+
+        <p> <b> Overview </b>: After one or more search clusters have been made, a user may perform a search on the clusters. After the user enters a string into the 
+        search bar, the system will use its text searching capabilities to go through the data that belongs to the selected clusters and return URLs to webpages that contain words from the string
+        provided by the user.</p>
+
+        <p> <b> Cross Reference </b> : 4.3 </p>
+
+        <b> Typical Course of Events: </b> <br>
+
+        <img src="src/Expanded Use Case - Perform search.png" alt="KotoUI" style="width:75%"> <!-- Table 1.0 -->
+        <p style="font-size:90%"><i>Table 4.0 : Typical Course of Events </i></p>
+
+        <p> <b> Alternate Course of Actions </b>:  <br>
+        <b> Step 3 -  </b> No matches to the input string are made and the system informs this to the user.</p> 
+        
+       
+
+
+        <h4 id="sec4.5">4.5 Perform Search (through voice)</h4>
+
+        <strong>Stimulus/ Response Sequences</strong>
+        <p>The following expanded use case shows the response sequences between the actor actions and the system
+          responses.
+          <li> <b> Use Case </b> : Perform Search (through voice) </li>
+          <li> <b> Preconditions </b> : Have text search functionality </li>
+          <li> <b> Actors </b> : User </li>
+          <li> <b> Goal </b> : To get URLs to webpages that contain the search keywords </li>
+        </p>
+
+        <p> <b> Overview </b>: It converts the voice search by user to text and sends to text search functionality and returns the result got from that one.</p>
+
+        <p> <b> Cross Reference </b> : 4.4 </p>
+
+        <b> Typical Course of Events: </b> <br>
+
+        <img src="src/voice-search.png" alt="KotoUI" style="width:75%"> <!-- Table 1.0 -->
+        <p style="font-size:90%"><i>Table 5.0 : Typical Course of Events </i></p>
+
+        <p> <b> Alternate Course of Actions </b>:  <br>
+        <b> Step 1 -  </b> If voice search is not available then inform the user. </p>
+
+
+
+
+        <h4 id="sec4.6">4.6 Log Out</h4>
+
+        <strong>Stimulus/ Response Sequences</strong>
+        <p>The following expanded use case shows the response sequences between the actor actions and the system
+          responses.
+          <li> <b> Use Case </b> : Log Out </li>
+          <li> <b> Preconditions </b> : To log out of the system, the user must first log in. </li>
+          <li> <b> Actors </b> : User </li>
+          <li> <b> Goal </b> : To exit from the system  </li>
+        </p>
+
+        <p> <b> Overview </b>: To exit from the system the user needs to log out. By clicking the Logout button the user will easily exit from the system. </p>
+
+        <p> <b> Cross Reference </b> : 4.1 </p>
+
+        <b> Typical Course of Events: </b> <br>
+
+        <img src="src/Usecase-logout.png" alt="KotoUI" style="width:75%"> <!-- Table 1.0 -->
+        <p style="font-size:90%"><i>Table 6.0 : Typical Course of Events </i></p>
+
+        <p> <b> Alternate Course of Actions </b>:  <br>
+        <b> Write here!! </b> </p>
+        
+        <p>
+          <b>Exception</b>:
+            <ul>
+                <li> Write here if there is any, else remove this! </li>
+            </ul>
+           
+        </p>
+
+        <h4 id="sec4.7">4.7 Install Plugins </h4>
+       
+        <strong>Stimulus/ Response Sequences</strong>
+        <p>The following expanded use case shows the response sequences between the actor actions and the system
+          responses.
+          <li> <b> Use Case </b> :  Install Plugins </li>
+          <li> <b> Preconditions </b> :  Logged in as a admin</li>
+          <li> <b> Actors </b> :  Admin</li>
+          <li> <b> Goal </b> :  Successfully install plugin to system</li>
+        </p>
+
+        <p> <b> Overview </b>: Admin will install a plugin for users to use for scraping a specific files present in a URL.   </p>
+
+        <p> <b> Cross Reference </b> :  None </p>
+
+        <b> Typical Course of Events: </b> <br>
+
+        <img src="src/create-plugin.PNG" alt="KotoUI" style="width:75%"> <!-- Table 1.0 -->
+        <p style="font-size:90%"><i>Table 7.0 : Typical Course of Events </i></p>
+
+        <p> <b> Alternate Course of Actions </b>:  <br>
+        <b> Step 3 -  </b> If invalid plugin then inform the user</p>
+
+
+        <br><br><br>
+
+
+        <h2 style="color:#3f5cab;">5. Other Nonfunctional Requirements</h2>
+        <h4 id="sec5.1"> 5.1 Performance Requirements</h4>
+        <p><b>Text search: </b>When searching through a cluster,the system should not take more than a few seconds to start returning results. Users might often have many
+          things to search for, so each search operation needs to be very quick or else the user's experience may not be satisfactory.<br>
+          <b>Data: </b> Large volumes of data can be scraped off of websites so the system needs to be able to handle this.<br>
+            <b>Mobile App: </b> Needs to be lightweight and responsive.<br>
+            <b>Database: </b>Needs to be suited for handling the raw data that will be scraped. If this is slow it might bottleneck the whole system.</p> 
+
+        <h4 id="sec5.2"> 5.2 Safety Requirements</h4>
+        <p> The URLs that the user provides to the system to be crawled has to be provided by the own risk of the user. The user has to make sure 
+        that the URLs allow the system to crawl and scrape data. </p>
+
+
+
+        <h4 id="sec5.3"> 5.3 Security Requirements</h4>
+        <p>The system shall not disclose any personal information about the users. The Application shall not grant
+          access to an unauthorized user and the Application shall not communicate with any other devices or servers
+          while in use by the user. The system will preserve the copyright of the content that has been crawled and indexed
+          since it will not show the data that has been crawled rather refer to the URL source of the data to the user.
+          Moreover, if any URL has a policy to prevent scraping the data, the system would not crawl or scrape that URL.
+           </p>
+        
+
+
+
+        <h4 id="sec5.4"> 5.4 Software Quality Attributes</h4>
+        <p>The software quality attributes of our app - is listed below:
+        <ul>
+          <li> <strong>AVAILABILITY : </strong> As the system will be hosted in cloud servers it will be available all
+            the time for users. </li>
+          <li> <strong>CORRECTNESS:</strong> The system will pull appropriate information from the receipt images and
+            use Googleâ€™s Vision API to provide accurate information based on the users request
+          </li>
+          <li><strong> MAINTAINABILITY:</strong> The system will store and maintain all uploaded copies of the receipts.
+          </li>
+        </ul>
+
+        <h4 id="sec5.5"> 5.5 Business Rules</h4>
+        <p>The website will be free for all. Every user will get all features for free. Users can donate to the application through GitHub. 
+        </p>
+          <br><br><br>
+
+          <h2 id="sec6" style="color:#3f5cab;">6. Appendix</h2>
+          <h2 id="appendixA">Appendix A: Glossary</h2>
+          <p>Definitions, acronyms, and abbreviations are listed below:<br>
+
+          
+
+          <li> <b> API </b>: Application Protocol Interface. This is the part of a program that lets other programs or services
+            interact with the data in the former and viceversa.
+          <li> <b> Framework </b>: It is like the base of a program that provides generic functionality but can be custom built
+            for specific purposes.
+          <li> <b> Backend</b>: The part of an app service that works behind the scenes away from the user's device, usually in
+            the cloud (server computer owned by the company).
+          
+      
+          <br> <br> 
+
+
+          <h2 id="appendixA">Appendix B: Analysis Models </h2>
+          <p> Not available at this moment. </p>
+
+          <div style="padding-top:20px;" class="row">
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</body>
+
+</html>
