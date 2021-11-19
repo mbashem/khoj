@@ -7,3 +7,6 @@ from django.http import  HttpResponse
 
 def index(request):
     return render(request, 'ClusterIndex.html')
+
+def withoutLogin(request):
+    return render(request, 'index.html')
