@@ -47,10 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'CreateClusters',
-<<<<<<< HEAD
     
-=======
->>>>>>> omi
 ]
 
 MIDDLEWARE = [
@@ -80,6 +77,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'project_root.wsgi.application'
 
@@ -139,6 +138,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# STATICFILES_DIRS = [
+#     'static',
+# ]
 
 
 # Default primary key field type
