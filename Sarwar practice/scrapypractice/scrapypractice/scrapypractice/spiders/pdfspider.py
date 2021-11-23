@@ -15,12 +15,8 @@ class testspider(scrapy.Spider):
     ]
     
 
-
     def start_requests(self):
-        if self.var==5:
-            return [scrapy.Request('http://www.northsouth.edu/nsu-announcements/in-person-classes-from-november-28-2021.html',callback=self.parse, cb_kwargs=dict(cnt = 1))]
-        else:
-            return[scrapy.Request('http://www.northsouth.edu/nsu-announcements/call-for-papers-undergraduate-law-symposium-fall-2021.html',callback=self.parse, cb_kwargs=dict(cnt = 1))]
+        return [scrapy.Request('http://localhost/Crawl_check/p1.html',callback=self.parse, cb_kwargs=dict(cnt = 1))]
 
          
 
@@ -37,7 +33,7 @@ class testspider(scrapy.Spider):
          
 
 
-        if(cnt<2):
+        if(cnt<10):
 
              for nextpage in response.css('a::attr(href)'):
                  nextpage = nextpage.get()
@@ -54,7 +50,7 @@ process = CrawlerProcess(settings={
 })
 
 
-process.crawl(testspider,var=5)
+process.crawl(testspider)
 print("Starting crawl")
 process.start()
 print("Crawl ended")
