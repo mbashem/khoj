@@ -12,6 +12,9 @@ class Clusters(models.Model):
         managed = False
         db_table = 'Clusters'
 
+    def __str__(self):
+        return self.cluster_name
+
 
 class CrawlingStrategy(models.Model):
     strategy_name = models.TextField(db_column='Strategy_Name', primary_key=True)  # Field name made lowercase.
@@ -19,6 +22,9 @@ class CrawlingStrategy(models.Model):
     class Meta:
         managed = False
         db_table = 'Crawling_Strategy'
+
+    def __str__(self):
+        return self.strategy_name
 
 
 class UrlList(models.Model):
@@ -30,6 +36,9 @@ class UrlList(models.Model):
         managed = False
         db_table = 'URL_List'
 
+    def __str__(self):
+        return self.url_name
+
 
 class UrlStrategy(models.Model):
     id = models.BigAutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
@@ -39,3 +48,6 @@ class UrlStrategy(models.Model):
     class Meta:
         managed = False
         db_table = 'URL_Strategy'
+
+    def __str__(self):
+        return self.url
