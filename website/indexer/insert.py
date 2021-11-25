@@ -22,10 +22,13 @@ def insert_into_solr_text(text: str, depth: int, url: str, page_url: str, data_t
     response = response.json()
     
     if (response["responseHeader"]["status"] >= 400):
-        return True
-    return False
+        return False
+    return True
 
 def insert_into_solr_file():
     """
     For future work
     """
+    send_url = f"{solr_url}/update/json/docs"
+    
+    
