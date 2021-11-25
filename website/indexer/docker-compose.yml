@@ -1,0 +1,14 @@
+version: '3'
+services:
+  solr_service:
+    container_name: solr_service
+    image: solr:8
+    ports:
+     - "8983:8983"
+    volumes:
+      - data:/var/solr
+    command:
+      - solr-precreate
+      - save_cluster
+volumes:
+  data:
