@@ -34,10 +34,11 @@ def StoreData(request):
 
     cursor = connection.cursor()
 
-    row = cursor.execute("""select "Cluster_Name" from "Clusters" where "User_Name"= %s """, [UserName])
+    row = cursor.execute("""select * from "Clusters" where "User_Name"= %s and "Cluster_Name" = %s""", (UserName, ClusterName))
+    cnt = cursor.rowcount
 
     # inserting cluster name in db/ prevents adding if the name already exists for a same user
-    if row is None:
+    if cnt == 0:
         cursor.execute("""INSERT INTO "Clusters"("User_Name", "Cluster_Name", "Depth") VALUES (%s, %s, %s)""", (UserName, ClusterName, Depth))
     else:
         params = {'msg' : 'Cluster Name already exist. Give another name!'}
