@@ -1,3 +1,4 @@
+import json
 import os
 from dotenv import load_dotenv
 import requests
@@ -25,10 +26,20 @@ def insert_into_solr_text(text: str, depth: int, url: str, page_url: str, data_t
         return False
     return True
 
-def insert_into_solr_file():
-    """
-    For future work
-    """
-    send_url = f"{solr_url}/update/json/docs"
+# def insert_into_solr_json(json_file: str):
+#     """
+#     For future work
+#     """
+#     send_url = f"{solr_url}/update"
+
+#     response = requests.post(send_url, json=json_file)
+
+#     response = response.json()
     
+#     print(json_file)
     
+#     print(response)
+    
+#     if (response["responseHeader"]["status"] >= 400):
+#         return False
+#     return True
