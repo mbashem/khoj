@@ -7,6 +7,7 @@ from CreateClusters.spiders import begin_crawl
 
 
 from scrapy.crawler import CrawlerProcess
+from scrapy.crawler import CrawlerRunner
 # Create your views here.
 
 from django.http import  HttpResponse
