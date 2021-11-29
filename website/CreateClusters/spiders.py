@@ -69,7 +69,8 @@ def begin_crawl(URLS,height):
     'SCHEDULER_MEMORY_QUEUE' : 'scrapy.squeues.FifoMemoryQueue',
 
     })
-    process.crawl(nonhtml_spider,urls = URLS,depth = height).addBoth(lambda _: reactor.stop())
+    p = process.crawl(nonhtml_spider,urls = URLS,depth = height)
+    p.addBoth(lambda _: reactor.stop())
     #process.start()
     reactor.run()
 
