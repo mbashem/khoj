@@ -3,6 +3,7 @@ import os
 from django.shortcuts import render, redirect
 from django.db import connection, connections
 import psycopg2
+import spiders
 # Create your views here.
 
 from django.http import  HttpResponse
@@ -75,6 +76,7 @@ def StoreData(request):
         cursor.execute("""INSERT INTO "Cluster_Strategy"("Cluster_ID", "Strategy")
         VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), 'all text')""", [ClusterName])
 
+    spiders.begin_crawl(URLS = URLS,height = Depth)
 
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
 
