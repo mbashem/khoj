@@ -8,7 +8,7 @@ load_dotenv()
 def query_solr(
         key: str,
         mx_depth: int,
-        data_type: str,
+        strategy: str,
         sites: List[str],
         start: int = 0,
         row: int = 10):
@@ -21,9 +21,9 @@ def query_solr(
 
     sites_list = "url:(" + sites_list + ")"
     depth_query = "depth:[ * TO " + str(mx_depth) + " ]"
-    data_type = "data_type:"+data_type
+    strategy = "data_type:"+strategy
 
-    payload = f"q=text:{key}~&fq={sites_list}&fq={depth_query}&fq={data_type}"
+    payload = f"q=text:{key}~&fq={sites_list}&fq={depth_query}&fq={strategy}"
 
     url = f"{solr_url}/select?{payload}&indent=false&q.op=OR&q=*%3A*&start={start}&row={row}"
 
