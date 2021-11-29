@@ -20,3 +20,4 @@ SOLR_URL=string
 6. Goto sites and create a site Follow this link: https://www.section.io/engineering-education/django-google-oauth/
 7. You will find site id in sties section
 To Run application "Poetry run server"
+8. Install solr -> you can download .zip or use docker. Theres a docker-compose file in indexer. run cd indexer , run docker compose up -d folder example:  SOLR_URL=http://localhost:8983/solr/<cluster_name>
