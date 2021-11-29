@@ -3,6 +3,7 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
+
 import scrapy
 import indexer.insert
 from scrapy.crawler import CrawlerProcess
@@ -35,7 +36,12 @@ class nonhtml_spider(scrapy.Spider):
         for txt in response.css("::text"):
             var = txt.get().strip()
             if len(var) != 0:
-                indexer.insert.insert_into_solr_text(text = var,depth = cnt,url = root_url,pageurl = response.url, data_type = "nonhtml")
+                print(var)
+                print(cnt)
+                print(root_url)
+                print(response.url)
+
+                indexer.insert.insert_into_solr_text( var, cnt, root_url, response.url, "nonhtml")
                 yield {'text' : var}
          
 
@@ -62,9 +68,13 @@ def begin_crawl(URLS,height):
     process.crawl(nonhtml_spider,urls = URLS,depth = height)
     process.start()
 
-begin_crawl(URLS = ['https://quotes.toscrape.com/page/1/'],height = 1)
 
 
-    
+#begin_crawl(URLS = ['https://quotes.toscrape.com/page/1/'],height = 1)
+
+
+
+#indexer.insert.insert_into_solr_text( 'New text', 5, 'root_url2','resposnse url 2',  "nonhtml")
+#print("run succesfully")
 
                     

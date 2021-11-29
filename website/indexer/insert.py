@@ -43,3 +43,5 @@ def insert_into_solr_text(text: str, depth: int, url: str, page_url: str, data_t
 #     if (response["responseHeader"]["status"] >= 400):
 #         return False
 #     return True
+
+#insert_into_solr_text(text = "this is a text", depth= 2, url = "this is a url", page_url = 'This is a page url', data_type = 'non html')
