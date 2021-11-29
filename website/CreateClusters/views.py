@@ -81,7 +81,7 @@ def StoreData(request):
         VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), 'all text')""", [ClusterName])
 
 
-    begin_crawl(URLS = URLS,height = Depth)
+    begin_crawl(URLS, Depth)
 
 
 
