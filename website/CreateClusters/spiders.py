@@ -6,7 +6,10 @@ sys.path.append(parentdir)
 
 import scrapy
 import indexer.insert
+from twisted.internet import reactor
 from scrapy.crawler import CrawlerProcess
+from scrapy.crawler import CrawlerRunner
+
 
 class nonhtml_spider(scrapy.Spider):
 
@@ -53,10 +56,11 @@ class nonhtml_spider(scrapy.Spider):
                  if nextpage is not None:
                      #print('THE URL IS '+response.urljoin(nextpage))
                      yield scrapy.Request(response.urljoin(nextpage),callback=self.parse, cb_kwargs=dict(cnt = cnt+1,root_url = root_url))  
-                     
+                    
+
 
 def begin_crawl(URLS,height):
-    process = CrawlerProcess(settings={
+    process = CrawlerRunner(settings={
     "FEEDS": {
         "scrapped.json": {"format": "json"},
     },
@@ -65,12 +69,13 @@ def begin_crawl(URLS,height):
     'SCHEDULER_MEMORY_QUEUE' : 'scrapy.squeues.FifoMemoryQueue',
 
     })
-    process.crawl(nonhtml_spider,urls = URLS,depth = height)
-    process.start()
+    process.crawl(nonhtml_spider,urls = URLS,depth = height).addBoth(lambda _: reactor.stop())
+    #process.start()
+    reactor.run()
 
 
 
-#begin_crawl(URLS = ['https://quotes.toscrape.com/page/1/'],height = 1)
+begin_crawl(URLS = ['https://quotes.toscrape.com/page/1/'],height = 1)
 
 
 
