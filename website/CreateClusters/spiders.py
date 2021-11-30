@@ -76,7 +76,7 @@ def begin_crawl(URLS,height):
 
 
 
-begin_crawl(URLS = ['https://quotes.toscrape.com/page/1/'],height = 1)
+#begin_crawl(URLS = ['https://quotes.toscrape.com/page/1/'],height = 1)
 
 
 
