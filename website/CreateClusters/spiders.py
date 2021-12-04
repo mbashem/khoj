@@ -3,12 +3,14 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
+from crochet import setup,run_in_reactor
 
 import scrapy
 import indexer.insert
 from twisted.internet import reactor
 from scrapy.crawler import CrawlerProcess
 from scrapy.crawler import CrawlerRunner
+
 
 #This is the crawler class for collecting nonhtml data
 class nonhtml_spider(scrapy.Spider):
@@ -54,27 +56,22 @@ class nonhtml_spider(scrapy.Spider):
                      yield scrapy.Request(response.urljoin(nextpage),callback=self.parse, cb_kwargs=dict(cnt = cnt+1,root_url = root_url))  
                     
 
-#The urls and depth from the create cluster form is passed to this function to begin the crawlng process
+#Begins the crawlng process in a seperate reactor thread using Crochet
+@run_in_reactor
 def begin_crawl(URLS,height):
     process = CrawlerRunner(settings={
-    #"FEEDS": {"scrapped.json": {"format": "json"},},
+    "FEEDS": {"scrapped.json": {"format": "json"},},
     "DEPTH_PRIORITY" : 1,
     "SCHEDULER_DISK_QUEUE" : 'scrapy.squeues.PickleFifoDiskQueue',
     'SCHEDULER_MEMORY_QUEUE' : 'scrapy.squeues.FifoMemoryQueue',
 
     })
     p = process.crawl(nonhtml_spider,urls = URLS,depth = height)
-    p.addBoth(lambda _: reactor.stop())
-    #process.start()
-    reactor.run(installSignalHandlers=False)
 
 
-
-#begin_crawl(URLS = ['https://quotes.toscrape.com/page/1/'],height = 1)
-
-
-
-#indexer.insert.insert_into_solr_text( 'New text', 5, 'root_url2','resposnse url 2',  "nonhtml")
-#print("run succesfully")
+#Sets up the reactor and calls the crawler
+def start_crawl(URLS,height):
+    setup()
+    begin_crawl(URLS=URLS,height=height)
 
                     
