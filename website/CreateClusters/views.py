@@ -3,6 +3,8 @@ import os
 from django.shortcuts import render, redirect
 from django.db import connection, connections
 
+from django.core.exceptions import ObjectDoesNotExist
+
 from CreateClusters.spiders import begin_crawl
 
 
@@ -25,6 +27,7 @@ def index(request):
 # this method stores cluster information in database
 def StoreData(request):
 
+    #received value through html form
     ClusterName = request.POST.get("ClusterName")
     Depth = int(request.POST.get("DEPTH"))
     PDF = request.POST.get("PDF")
@@ -35,57 +38,63 @@ def StoreData(request):
     URLS = request.POST.getlist("URLS")
     UserName = request.POST.get("username")
 
+    #checking if a cluster exists of the user with the same name given in the form
+    try:
+        isClusterExist = Clusters.objects.get(user_name=UserName, cluster_name=ClusterName)
 
-
-    cursor = connection.cursor()
-
-    row = cursor.execute("""select * from "Clusters" where "User_Name"= %s and "Cluster_Name" = %s""", (UserName, ClusterName))
-    cnt = cursor.rowcount
-
-    # inserting cluster name in db/ prevents adding if the name already exists for a same user
-    if cnt == 0:
-        cursor.execute("""INSERT INTO "Clusters"("User_Name", "Cluster_Name", "Depth") VALUES (%s, %s, %s)""", (UserName, ClusterName, Depth))
-    else:
-        params = {'msg' : 'Cluster Name already exist. Give another name!'}
+        params = {'msg': 'Cluster Name already exist. Give another name!'}
+        #returns a message if a cluster exists with the same name of a user
         return render(request, 'CreateClusters/ClusterIndex.html', params)
 
-    # inserting urls in db
-    for url in URLS:
-        cursor.execute("""INSERT INTO "URL_List"("Cluster_ID", "URL_Name")
-            VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), %s);""", (ClusterName, url))
+    # insert cluster name and depth
+    except ObjectDoesNotExist:
+        auth_user_object = AuthUser.objects.get(username=UserName)
+        create_this_cluster = Clusters(user_name=auth_user_object, cluster_name=ClusterName, depth=Depth)
+        create_this_cluster.save()
 
+    Cluster_object = Clusters.objects.get(user_name=UserName, cluster_name=ClusterName)
+
+
+    #inserting urls of a cluster
+    for url in URLS:
+
+        insert_url = UrlList(cluster=Cluster_object, url_name=url)
+
+        insert_url.save()
 
     #for .pdf
     if PDF == "on":
-        cursor.execute("""INSERT INTO "Cluster_Strategy"("Cluster_ID", "Strategy")
-        VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), '.pdf')""", [ClusterName])
+        strategy_object_pdf = CrawlingStrategy.objects.get(strategy_name='.pdf')
+        save_strategy_pdf = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_pdf)
+        save_strategy_pdf.save()
 
     # for .txt
     if TXT == "on":
-        cursor.execute("""INSERT INTO "Cluster_Strategy"("Cluster_ID", "Strategy")
-        VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), '.txt')""", [ClusterName])
+        strategy_object_txt = CrawlingStrategy.objects.get(strategy_name='.txt')
+        save_strategy_txt = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_txt)
+        save_strategy_txt.save()
 
     # for .docx
     if DOCX == "on":
-        cursor.execute("""INSERT INTO "Cluster_Strategy"("Cluster_ID", "Strategy")
-        VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), '.docx')""", [ClusterName])
+        strategy_object_docx = CrawlingStrategy.objects.get(strategy_name='.docx')
+        save_strategy_docx = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_docx)
+        save_strategy_docx.save()
 
     # for .xml
     if XML == "on":
-        cursor.execute("""INSERT INTO "Cluster_Strategy"("Cluster_ID", "Strategy")
-        VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), '.xml')""", [ClusterName])
+        strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='.xml')
+        save_strategy_xml = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_xml)
+        save_strategy_xml.save()
 
     # for all text
     if ALLTEXT == "on":
-        cursor.execute("""INSERT INTO "Cluster_Strategy"("Cluster_ID", "Strategy")
-        VALUES ((select "Cluster_ID" from "Clusters" where "Cluster_Name"=%s), 'all text')""", [ClusterName])
+        strategy_object_all_text = CrawlingStrategy.objects.get(strategy_name='all text')
+        save_strategy_all_text = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_all_text)
+        save_strategy_all_text.save()
 
 
     begin_crawl(URLS, Depth)
 
 
-
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
-
-
 
