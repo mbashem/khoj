@@ -53,3 +53,4 @@ class ClusterStrategy(models.Model):
 
     def __str__(self):
         return self.strategy
+
