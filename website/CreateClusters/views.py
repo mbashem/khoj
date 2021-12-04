@@ -43,6 +43,7 @@ def StoreData(request):
         isClusterExist = Clusters.objects.get(user_name=UserName, cluster_name=ClusterName)
 
         params = {'msg': 'Cluster Name already exist. Give another name!'}
+
         #returns a message if a cluster exists with the same name of a user
         return render(request, 'CreateClusters/ClusterIndex.html', params)
 
@@ -93,7 +94,7 @@ def StoreData(request):
         save_strategy_all_text.save()
 
 
-    begin_crawl(URLS, Depth)
+    #begin_crawl(URLS, Depth)
 
 
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
