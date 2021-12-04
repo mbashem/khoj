@@ -7,6 +7,7 @@ class Clusters(models.Model):
     user_name = models.ForeignKey('auth_app.AuthUser', models.DO_NOTHING, db_column='User_Name')  # Field name made lowercase.
     cluster_name = models.TextField(db_column='Cluster_Name', unique=True)  # Field name made lowercase.
     depth = models.SmallIntegerField(db_column='Depth')  # Field name made lowercase.
+    isScrapedCluster = models.BooleanField(default=False)
 
 
     class Meta:
@@ -44,8 +45,8 @@ class UrlList(models.Model):
 
 class ClusterStrategy(models.Model):
     id = models.BigAutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    cluster = models.ForeignKey('Clusters', models.DO_NOTHING, db_column='Cluster_ID')  # Field name made lowercase.
-    strategy = models.ForeignKey('CrawlingStrategy', models.DO_NOTHING, db_column='Strategy')  # Field name made lowercase.
+    cluster = models.ForeignKey('Clusters', models.DO_NOTHING, db_column='Cluster_ID', default=None)  # Field name made lowercase.
+    strategy = models.ForeignKey('CrawlingStrategy', models.DO_NOTHING, db_column='Strategy', default=None)  # Field name made lowercase.
 
     class Meta:
         managed = True
