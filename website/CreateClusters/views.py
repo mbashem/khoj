@@ -5,7 +5,7 @@ from django.db import connection, connections
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from CreateClusters.spiders import begin_crawl
+from CreateClusters.spiders import begin_crawl, start_crawl
 
 
 from scrapy.crawler import CrawlerProcess
@@ -94,7 +94,7 @@ def StoreData(request):
         save_strategy_all_text.save()
 
 
-    #begin_crawl(URLS, Depth)
+    start_crawl(URLS = URLS,height = Depth)
 
 
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
