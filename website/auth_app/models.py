@@ -69,7 +69,7 @@ class AuthUser(models.Model):
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
     is_superuser = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150)
+    username = models.CharField(unique=True, max_length=150, primary_key=True)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     email = models.CharField(max_length=254)
@@ -80,7 +80,8 @@ class AuthUser(models.Model):
     class Meta:
         managed = False
         db_table = 'auth_user'
-
+    def __str__(self):
+        return self.username
 
 class AuthUserGroups(models.Model):
     id = models.BigAutoField(primary_key=True)

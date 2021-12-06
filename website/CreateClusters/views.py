@@ -94,8 +94,10 @@ def StoreData(request):
         save_strategy_all_text.save()
 
 
-    start_crawl(URLS = URLS,height = Depth)
+    #start_crawl(URLS = URLS,height = Depth)
 
 
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
+
+
 
