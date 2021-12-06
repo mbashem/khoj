@@ -10,14 +10,14 @@ from auth_app import *
 from django.http import  HttpResponse
 
 def index(request):
-    return render(request, 'index.html')
-
-def showClusters(request):
 
     if request.user.is_authenticated:
-        params = {'msg_cluster' : 'Here are your clusters'}
+        params = {'msg_cluster': 'Here are your clusters'}
+        print("if part execute")
         return render(request, 'index.html', params)
-
     else:
+        print("else part execute")
         params = {'msg_cluster': 'login to view clusters'}
         return render(request, 'index.html', params)
+
+
