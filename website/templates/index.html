@@ -22,6 +22,9 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="CreateClusters/">Create Cluster</a></li>
+          {% comment %} <li><a class="nav-link scrollto" href="{% provider_login_url 'google' %}" >Login</a></li> {% endcomment %}
+          
+           {% comment %} <li><a class="nav-link scrollto" href="{% url 'logout' %}">Log out</a></li>  {% endcomment %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -39,18 +42,26 @@
 {% if user.is_authenticated %}
   <p> You are logged in as {{ user.username }}</p>
 
+   <div class="d-flex">
+        {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+              <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
+      </div>
+
   {% comment %} <a href="{% url 'logout' %}">Logout</a> {% endcomment %}
 
   {% comment %} <a href="CreateClusters/"> Create a cluster! </a> {% endcomment %}
+
 {% else %}
-  <a href="{% provider_login_url 'google' %}">Login With Google</a>
+
+  {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
+  <p> You are not logged in</p>
+  <div class="d-flex">
+    {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+          <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
+  </div>
 
 {% endif %}
-      <div class="d-flex">
-        <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a>
-                <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a>
-       
-      </div>
+     
     </div>
   </section><!-- End Hero -->
   
