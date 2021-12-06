@@ -6,82 +6,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  
+<meta charset="UTF-8">
+
 </head>
 <body>
- <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">KHOJ<span>.</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+    <h1 class="logo"><a href="index.html">KHOJ<span>.</span></a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+
 
       <nav id="navbar" class="navbar">
+
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="CreateClusters/">Create Cluster</a></li>
-          {% comment %} <li><a class="nav-link scrollto" href="{% provider_login_url 'google' %}" >Login</a></li> {% endcomment %}
-          
-           {% comment %} <li><a class="nav-link scrollto" href="{% url 'logout' %}">Log out</a></li>  {% endcomment %}
+          <li><a class="nav-link scrollto" href="showclusters" >Show clusters</a></li> 
+      
+        {% comment %} <li><a class="nav-link scrollto" href="{% url 'logout' %}">Log out</a></li>  {% endcomment %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+
       </nav><!-- .navbar -->
 
-    </div>
-  </header><!-- End Header -->
+</div>
+</header><!-- End Header -->
 
-  <body>
+<body>
 
-   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to <span>KHOJ   </span></h1> <br>
-        <h2> {{msg_cluster}} </h2>
-     
-{% if user.is_authenticated %}
-  <p> You are logged in as {{ user.username }}</p>
+<!-- ======= Hero Section ======= -->
 
-   <div class="d-flex">
-        {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
-              <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
-      </div>
+<section id="hero" class="d-flex align-items-center">
+<div class="container" data-aos="zoom-out" data-aos-delay="100">
+            <h1>Welcome to <span>KHOJ</span></h1>
+                      
+                  {% if user.is_authenticated %}
+                      <p> You are logged in as {{ user.username }}</p>
 
-  {% comment %} <a href="{% url 'logout' %}">Logout</a> {% endcomment %}
+                    <div class="d-flex">
 
-  {% comment %} <a href="CreateClusters/"> Create a cluster! </a> {% endcomment %}
+                                {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+                              <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
+                    </div>
 
-{% else %}
+                  {% comment %} <a href="{% url 'logout' %}">Logout</a> {% endcomment %}
 
-  {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
-  <p> You are not logged in</p>
-  <div class="d-flex">
-    {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
-          <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
-  </div>
+                  {% comment %} <a href="CreateClusters/"> Create a cluster! </a> {% endcomment %}
 
-{% endif %}
-     
-    </div>
-  </section><!-- End Hero -->
+                  {% else %}
+
+                  {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
+                  <p> You are not logged in</p>
+
+                      <div class="d-flex">
+                            {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+                            <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
+                      </div>
+
+                  {% endif %}
   
+</div>
+
+
+</section><!-- End Hero --> <br> <br>
+
+                <div  class="container">
+                  <center>
+                    <table border="4">
+                    
+                      <tr>
+                          <th>Cluster_Name</th>
+                          <th>Depth</th>
+                      </tr>
+                    {% for result in data %}
+                        <tr>
+                          <td>{{result.Cluster_Name}}</td>
+                          <td>{{result.Depth}}</td>
+                        </tr>
+                        {% endfor%}
+                    
+                    </table>
+                  </center>
+
+
+                </div> 
+
+
+
+
 {% comment %} 
 
 <h1>My Google OAuth Project </h1>
 
 {% if user.is_authenticated %}
-  <p>Welcome, You are logged in as {{ user.username }}</p>
+<p>Welcome, You are logged in as {{ user.username }}</p>
 
-  <a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'logout' %}">Logout</a>
 
-  <a href="CreateClusters/"> Create a cluster! </a>
+<a href="CreateClusters/"> Create a cluster! </a>
 {% else %}
-  <a href="{% provider_login_url 'google' %}">Login With Google</a>
+<a href="{% provider_login_url 'google' %}">Login With Google</a>
 
 {% endif %} {% endcomment %}
 
 
-{% endblock %}
+ {% endblock %} 
 </body>
 </html>
