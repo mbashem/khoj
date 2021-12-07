@@ -6,113 +6,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-
+  <meta charset="UTF-8">
+  
 </head>
 <body>
-<!-- ======= Header ======= -->
-<header id="header" class="d-flex align-items-center">
-  <div class="container d-flex align-items-center justify-content-between">
-
-    <h1 class="logo"><a href="index.html">KHOJ<span>.</span></a></h1>
-    <!-- Uncomment below if you prefer to use an image logo -->
-    <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
-
-
-      <nav id="navbar" class="navbar">
-
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="CreateClusters/">Create Cluster</a></li>
-          <li><a class="nav-link scrollto" href="showclusters" >Show clusters</a></li> 
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
       
-        {% comment %} <li><a class="nav-link scrollto" href="{% url 'logout' %}">Log out</a></li>  {% endcomment %}
+      <h1 class="logo"><a href="index.html">KHOJ<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+      
+      
+      <nav id="navbar" class="navbar">
+        
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero"> Home</a></li>
+          <li><a class="nav-link scrollto" href="CreateClusters/">Create Cluster</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-
+        
       </nav><!-- .navbar -->
-
-</div>
-</header><!-- End Header -->
-
-<body>
-
-<!-- ======= Hero Section ======= -->
-
-<section id="hero" class="d-flex align-items-center">
-<div class="container" data-aos="zoom-out" data-aos-delay="100">
-            <h1>Welcome to <span>KHOJ</span></h1>
-                      
-                  {% if user.is_authenticated %}
-                      <p> You are logged in as {{ user.username }}</p>
-
-                    <div class="d-flex">
-
-                                {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
-                              <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
-                    </div>
-
-                  {% comment %} <a href="{% url 'logout' %}">Logout</a> {% endcomment %}
-
-                  {% comment %} <a href="CreateClusters/"> Create a cluster! </a> {% endcomment %}
-
-                  {% else %}
-
-                  {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
-                  <p> You are not logged in</p>
-
-                      <div class="d-flex">
-                            {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
-                            <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
-                      </div>
-
-                  {% endif %}
+      
+    </div>
+  </header><!-- End Header -->
   
-</div>
-
-
-</section><!-- End Hero --> <br> <br>
-
-                <div  class="container">
-                  <center>
-                    <table border="4">
-                    
-                      <tr>
-                          <th>Cluster_Name</th>
-                          <th>Depth</th>
-                      </tr>
-                    {% for result in data %}
-                        <tr>
-                          <td>{{result.Cluster_Name}}</td>
-                          <td>{{result.Depth}}</td>
-                        </tr>
-                        {% endfor%}
-                    
-                    </table>
-                  </center>
-
-
-                </div> 
-
-
-
-
-{% comment %} 
-
-<h1>My Google OAuth Project </h1>
-
-{% if user.is_authenticated %}
-<p>Welcome, You are logged in as {{ user.username }}</p>
-
-<a href="{% url 'logout' %}">Logout</a>
-
-<a href="CreateClusters/"> Create a cluster! </a>
-{% else %}
-<a href="{% provider_login_url 'google' %}">Login With Google</a>
-
-{% endif %} {% endcomment %}
-
-
- {% endblock %} 
-</body>
-</html>
+  <body>
+    
+    <!-- ======= Hero Section ======= -->
+    
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <h1>Welcome to <span>KHOJ</span></h1>
+        
+        
+        <h2> {{msg}}  </h2>     
+        {% if user.is_authenticated %}
+        <p> You are logged in as {{ user.username }}</p>
+        
+        <div class="d-flex">
+          
+          {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+          <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
+        </div>             
+        
+        {% else %}
+        
+        {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
+        <p> You are not logged in </p>
+        
+        <div class="d-flex">
+          {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+          <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
+        </div>
+        
+        {% endif %}
+        
+      </div>
+      
+      
+    </section><!-- End Hero --> <br> <br>
+    
+    
+    
+    
+    
+    
+    <div class = "container" align="align-items-center">
+      {% if user.is_authenticated %}
+      <br>
+      <div class="container justify-content-center" align="center">
+        <div class="row"  align="center">
+          <div class="col-md-8" align="center">
+            <div class="input-group mb-3"> <input type="text" class="form-control input-text" placeholder="Search anything...." aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append"> <button class="btn btn-outline-warning btn-lg" type="button"><i class="fa fa-search"></i></button> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <h2 align="center"> Here are the list of your Clusters! </h2> <br>
+      
+      
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            
+            <th scope="col">Cluster Name</th>
+            <th scope="col">Depth</th>
+            <th scope="col">Ready to Search</th>
+            <th scope="col">Select Clusters</th>
+            
+          </tr>
+        </thead>
+        <tbody>                          
+          
+          {% for result in Query %}
+          
+          <tr>
+            
+            <td> {{result.0}} </td>
+            <td> {{result.1}} </td>
+            <td> 
+              {%if not result.2%}
+              
+              <i class="fas fa-times"></i>
+              
+              {% else %}
+              <i class="fas fa-check-square"></i>
+              
+              {% endif %}
+              
+            </td>
+            <td>
+              
+              <input type="checkbox" id="select-cluster" name="select-cluster">             
+              
+            </td> 
+            
+          </tr>
+          
+          {% endfor %}                                   
+        </tbody>
+      </table>
+      
+      {% else %}
+      
+      <h2 align="center">  At first Login to KHOJ!  </h2>
+      
+      {% endif %}
+      
+    </div>
+    
+    
+    
+    
+    {% comment %} 
+    
+    <h1>My Google OAuth Project </h1>
+    
+    {% if user.is_authenticated %}
+    <p>Welcome, You are logged in as {{ user.username }}</p>
+    
+    <a href="{% url 'logout' %}">Logout</a>
+    
+    <a href="CreateClusters/"> Create a cluster! </a>
+    {% else %}
+    <a href="{% provider_login_url 'google' %}">Login With Google</a>
+    
+    {% endif %} {% endcomment %}
+    
+    
+    {% endblock %} 
+  </body>
+  </html>
+  

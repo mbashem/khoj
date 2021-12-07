@@ -88,13 +88,16 @@ WSGI_APPLICATION = 'project_root.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv("DATABASE_NAME"),
         'USER': os.getenv("DATABASE_USER"),
         'PASSWORD': os.getenv("DATABASE_PASSWORD"),
         'HOST': os.getenv("DATABASE_HOST"),
         'PORT': os.getenv("DATABASE_PORT"),
     }
+
+    
+
 }
 
 
@@ -144,10 +147,6 @@ STATICFILES_DIRS = [
 # ]
 
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-#STATIC_ROOT = os.path.join(BASE_DIR, )
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

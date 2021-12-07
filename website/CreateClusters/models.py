@@ -8,8 +8,7 @@ class Clusters(models.Model):
     cluster_name = models.TextField(db_column='Cluster_Name', unique=True)  # Field name made lowercase.
     depth = models.SmallIntegerField(db_column='Depth')  # Field name made lowercase.
     isScrapedCluster = models.BooleanField(default=False)
-
-
+    
     class Meta:
         managed = False
         db_table = 'Clusters'
