@@ -40,8 +40,7 @@
       <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <h1>Welcome to <span>KHOJ</span></h1>
         
-        
-        <h2> {{msg}}  </h2>     
+
         {% if user.is_authenticated %}
         <p> You are logged in as {{ user.username }}</p>
         
@@ -79,7 +78,7 @@
       <div class="container justify-content-center" align="center">
         <div class="row"  align="center">
           <div class="col-md-8" align="center">
-            <div class="input-group mb-3"> <input type="text" class="form-control input-text" placeholder="Search anything...." aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group mb-3"> <input type="text" class="form-control input-text" placeholder="Select clusters from the table below and search anything" aria-label="Recipient's username" aria-describedby="basic-addon2">
               <div class="input-group-append"> <button class="btn btn-outline-warning btn-lg" type="button"><i class="fa fa-search"></i></button> </div>
             </div>
           </div>

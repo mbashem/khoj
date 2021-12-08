@@ -18,13 +18,13 @@ def index(request):
 
         params = {'Query': show_clusters_user, 'msg': 'here are your clusters!'}
         
-        print(show_clusters_user)
-        print(request.user.username)
-    
+        # print(show_clusters_user)
+        # print(request.user.username)
 
         return render(request, 'index.html', params)
+
     else:
-        print("else part execute")
+
         params = {'msg': 'login to view clusters'}
         return render(request, 'index.html', params)
 
