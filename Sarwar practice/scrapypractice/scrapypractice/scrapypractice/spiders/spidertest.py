@@ -1,5 +1,14 @@
+from time import sleep
+from crochet import run_in_reactor, setup, wait_for
+setup()
+
+import time
 import scrapy
 from scrapy.crawler import CrawlerProcess
+from scrapy.crawler import CrawlerRunner
+
+from twisted.internet import reactor
+
 
 
 class testspider(scrapy.Spider):
@@ -17,10 +26,9 @@ class testspider(scrapy.Spider):
 
 
     def start_requests(self):
-        if self.var==5:
-            return [scrapy.Request('http://www.northsouth.edu/nsu-announcements/in-person-classes-from-november-28-2021.html',callback=self.parse, cb_kwargs=dict(cnt = 1))]
-        else:
-            return[scrapy.Request('http://www.northsouth.edu/nsu-announcements/call-for-papers-undergraduate-law-symposium-fall-2021.html',callback=self.parse, cb_kwargs=dict(cnt = 1))]
+      
+            return [scrapy.Request('https://quotes.toscrape.com/page/1/',callback=self.parse, cb_kwargs=dict(cnt = 1))]
+        
 
          
 
@@ -28,7 +36,7 @@ class testspider(scrapy.Spider):
 
         
         yield {'url' : response.url,'depth' : cnt}
-        print('THE CURRENT URL IS '+response.url)
+        #print('THE CURRENT URL IS '+response.url)
 
         for txt in response.css("::text"):
             var = txt.get().strip()
@@ -42,25 +50,32 @@ class testspider(scrapy.Spider):
              for nextpage in response.css('a::attr(href)'):
                  nextpage = nextpage.get()
                  if nextpage is not None:
-                     print('THE URL IS '+response.urljoin(nextpage))
+                     #print('THE URL IS '+response.urljoin(nextpage))
                      yield scrapy.Request(response.urljoin(nextpage),callback=self.parse, cb_kwargs=dict(cnt = cnt+1))  
                      
 
 
-process = CrawlerProcess(settings={
-    "FEEDS": {
-        "scrapped.json": {"format": "json"},
-    },
-})
+
+@wait_for(timeout = 10.0)
+def begin_crawl():
+    
+    process = CrawlerRunner(settings={"FEEDS": {"scrapped.json": {"format": "json"},},})
+    d = process.crawl(testspider)
+    print("crawl begun")
+    return d
+    
+   
+    
+    
+    
+    
+    
 
 
-process.crawl(testspider,var=5)
-print("Starting crawl")
-process.start()
-print("Crawl ended")
                     
+begin_crawl()
+print("its done")
 
 
-            
 
 

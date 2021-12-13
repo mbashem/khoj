@@ -384,6 +384,14 @@ docs = ["sphinx", "sphinx-rtd-theme", "zope.interface"]
 tests = ["pytest (>=6.0.0,<7.0.0)", "coverage[toml] (==5.0.4)"]
 
 [[package]]
+name = "pymupdf"
+version = "1.19.3"
+description = "Python bindings for the PDF toolkit and renderer MuPDF"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "pyopenssl"
 version = "21.0.0"
 description = "Python wrapper module around the OpenSSL library"
@@ -655,7 +663,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "e4ebf59b1d25a0427e0f5a8792982c30c3833d8c24a6c70bf222cc007a2f2b13"
+content-hash = "d20600f2374d6cbdc99ffc1160c52fbabf6f254c4d5a22c9a73298bd048684aa"
 
 [metadata.files]
 asgiref = [
@@ -950,6 +958,29 @@ pydispatcher = [
 pyjwt = [
     {file = "PyJWT-2.3.0-py3-none-any.whl", hash = "sha256:e0c4bb8d9f0af0c7f5b1ec4c5036309617d03d56932877f2f7a0beeb5318322f"},
     {file = "PyJWT-2.3.0.tar.gz", hash = "sha256:b888b4d56f06f6dcd777210c334e69c737be74755d3e5e9ee3fe67dc18a0ee41"},
+]
+pymupdf = [
+    {file = "PyMuPDF-1.19.3-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:b32fc1131c8f3c7d244c24b695d1dd698bc1ae66e704e98e888d642e41b39acc"},
+    {file = "PyMuPDF-1.19.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:087c5c82112c7468b1fb1dd7007bf98040745e7447f3571e5b1451e6bb997f6f"},
+    {file = "PyMuPDF-1.19.3-cp310-cp310-win32.whl", hash = "sha256:de4ef9c00906a413674342f1c1c07fc5e1264274eadb3d5fb78786a13220b13a"},
+    {file = "PyMuPDF-1.19.3-cp310-cp310-win_amd64.whl", hash = "sha256:9e9537eb005622075540fdaf13b5c579b889c36b98a920bbce782131952ee92e"},
+    {file = "PyMuPDF-1.19.3-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:05ca523901db11a2f1d92b484722119bc65bd9b90e347ab1862b9a7304ce8c0f"},
+    {file = "PyMuPDF-1.19.3-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c3a0c01fe109d23df0a6afcf1483b9df3b403472fd3b4ef9b14bfaa4c6c11bae"},
+    {file = "PyMuPDF-1.19.3-cp36-cp36m-win32.whl", hash = "sha256:b6fdbdcd5471081859b85b1a3ba2ecc1e39cd6334762140faa943367f68f03b1"},
+    {file = "PyMuPDF-1.19.3-cp36-cp36m-win_amd64.whl", hash = "sha256:3e6835f23eeba50cbd2a79369867224fc01b531ce74934ce545b38bc2f4a8657"},
+    {file = "PyMuPDF-1.19.3-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:cb232f2b886bfc72c47e9df351d6a57461b16383882da4fad36e9252c3c10a8d"},
+    {file = "PyMuPDF-1.19.3-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:259ef0f445e4ccdf8744106c294e707838cf83f38d61e2e797bb7be4762dcc5b"},
+    {file = "PyMuPDF-1.19.3-cp37-cp37m-win32.whl", hash = "sha256:ceaa5f14c78851a3a26a3f23d565389e76c72cbed0ce7a68a6d893403658b6b7"},
+    {file = "PyMuPDF-1.19.3-cp37-cp37m-win_amd64.whl", hash = "sha256:b4be04f4a0c123246a884cbf186a7caafe858abcfe6b9f149044ea77e653a81f"},
+    {file = "PyMuPDF-1.19.3-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:feac5e93aa1fb71a51c69c2237c7f75476c974408a62487f9d80ec6b19fb00cb"},
+    {file = "PyMuPDF-1.19.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bd3b8bcc2133afb36d8b9b763429b71e8c3aa5020b2d84f561212fa88899ea62"},
+    {file = "PyMuPDF-1.19.3-cp38-cp38-win32.whl", hash = "sha256:fcfb64c3d167bc10ac1501fc79a0915fbda321323563062cc44ad7311e3eef96"},
+    {file = "PyMuPDF-1.19.3-cp38-cp38-win_amd64.whl", hash = "sha256:ff2f766b7d0859ce4061abfbdaec88215bd203b71aa4d33ff0f02931e7d32de0"},
+    {file = "PyMuPDF-1.19.3-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:e2d68cdf27c00050dab156817dfea6c79b52ae446fc786c3356d4915d5e21758"},
+    {file = "PyMuPDF-1.19.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d49baa270c555dc529ff7d337be42bb15b542e1c6ab2445f7324d3ac6b0ca93e"},
+    {file = "PyMuPDF-1.19.3-cp39-cp39-win32.whl", hash = "sha256:88091efeef8efcd958c1268f894d90ba8d85ba5abcc038b7de040b24f2a48f11"},
+    {file = "PyMuPDF-1.19.3-cp39-cp39-win_amd64.whl", hash = "sha256:ae240fd8d1a9d0e2910bd14df5414e320f662d093f8be18bcb8c2be076d86ffc"},
+    {file = "PyMuPDF-1.19.3.tar.gz", hash = "sha256:5bdaf360c2739f80296d1ab27512eb26a6a056609f178c359593384f6654ad2b"},
 ]
 pyopenssl = [
     {file = "pyOpenSSL-21.0.0-py2.py3-none-any.whl", hash = "sha256:8935bd4920ab9abfebb07c41a4f58296407ed77f04bd1a92914044b848ba1ed6"},
