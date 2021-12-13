@@ -1,3 +1,5 @@
+
+
 table{
 	margin-top: 50px;
 	text-align: center;
@@ -13,3 +15,20 @@ table{
 	width: 100%;
 }
 
+.container {
+    margin-top: 200px
+}
+
+.btn:hover {
+    color: #fff
+}
+
+.input-text:focus {
+    box-shadow: 0px 0px 0px;
+    border-color: #f8c146;
+    outline: 0px
+}
+
+.form-control {
+    border: 1px solid #f8c146
+}

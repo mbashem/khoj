@@ -11,8 +11,6 @@ from django.db import models
 from django.db import models
 
 
-
-
 class AccountEmailaddress(models.Model):
     id = models.BigAutoField(primary_key=True)
     email = models.CharField(unique=True, max_length=254)
@@ -79,11 +77,11 @@ class AuthUser(models.Model):
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
 
-
     class Meta:
         managed = False
         db_table = 'auth_user'
-
+    def __str__(self):
+        return self.username
 
 class AuthUserGroups(models.Model):
     id = models.BigAutoField(primary_key=True)

@@ -6,70 +6,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   
 </head>
 <body>
- <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
+      
       <h1 class="logo"><a href="index.html">KHOJ<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
-
+      
+      
       <nav id="navbar" class="navbar">
+        
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="#hero"> Home</a></li>
           <li><a class="nav-link scrollto" href="CreateClusters/">Create Cluster</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+        
       </nav><!-- .navbar -->
-
+      
     </div>
   </header><!-- End Header -->
-
-  <body>
-
-   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to <span>KHOJ</span></h1>
-     
-{% if user.is_authenticated %}
-  <p> You are logged in as {{ user.username }}</p>
-
-  {% comment %} <a href="{% url 'logout' %}">Logout</a> {% endcomment %}
-
-  {% comment %} <a href="CreateClusters/"> Create a cluster! </a> {% endcomment %}
-{% else %}
-  <a href="{% provider_login_url 'google' %}">Login With Google</a>
-
-{% endif %}
-      <div class="d-flex">
-        <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a>
-                <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a>
-       
-      </div>
-    </div>
-  </section><!-- End Hero -->
   
-{% comment %} 
+  <body>
+    
+    <!-- ======= Hero Section ======= -->
+    
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <h1>Welcome to <span>KHOJ</span></h1>
+        
 
-<h1>My Google OAuth Project </h1>
+        {% if user.is_authenticated %}
+        <p> You are logged in as {{ user.username }}</p>
+        
+        <div class="d-flex">
+          
+          {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+          <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
+        </div>             
+        
+        {% else %}
+        
+        {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
+        <p> You are not logged in </p>
+        
+        <div class="d-flex">
+          {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
+          <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
+        </div>
+        
+        {% endif %}
+        
+      </div>
+      
+      
+    </section><!-- End Hero --> <br> <br>
+    
+    
+    
+    
+    
+    
+    <div class = "container" align="align-items-center">
+      {% if user.is_authenticated %}
+      <br>
+      <form action="#" method="get" > {% csrf_token %}
+        <div class="container justify-content-center" align="center">
+          <div class="row"  align="center">
+            <div class="col-md-8" align="center">
 
-{% if user.is_authenticated %}
-  <p>Welcome, You are logged in as {{ user.username }}</p>
+                <div class="input-group mb-3"> <input type="text" class="form-control input-text" name="search_text" placeholder="Select clusters from the table below and search anything" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append"> <input type="submit" value="Search" class="btn btn-info btn-block rounded-0 py-2"> </div>
+                </div>
 
-  <a href="{% url 'logout' %}">Logout</a>
+            </div>
+          </div>
+        </div>
+      
+      
+        <h2 align="center"> Here are the list of your Clusters! </h2> <br>
+      
+      
+          <table class="table table-bordered">
+            <thead>
+              <tr>
 
-  <a href="CreateClusters/"> Create a cluster! </a>
-{% else %}
-  <a href="{% provider_login_url 'google' %}">Login With Google</a>
+                <th scope="col">Cluster Name</th>
+                <th scope="col">Depth</th>
+                <th scope="col">Ready to Search</th>
+                <th scope="col">Select Clusters</th>
 
-{% endif %} {% endcomment %}
+              </tr>
+            </thead>
+            <tbody>
 
+              {% for result in Query %}
 
-{% endblock %}
-</body>
-</html>
+              <tr>
+
+                <td> {{result.0}} </td>
+                <td> {{result.1}} </td>
+                <td>
+                  {%if not result.2%}
+
+                  <i class="fas fa-times"></i>
+
+                  {% else %}
+                  <i class="fas fa-check-square"></i>
+
+                  {% endif %}
+
+                </td>
+                <td>
+
+                  <input type="checkbox" id="select-cluster" name={{result.0}}>
+
+                </td>
+
+              </tr>
+                {% empty %}
+              <tr><td colspan="4" align= "center"> You have not created any search clusters yet.</td></tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+      </form>
+      
+      {% else %}
+      
+      <h2 align="center">  Log in to view and create search clusters!  </h2>
+      
+      {% endif %}
+      
+    </div>
+    
+    
+    
+    
+    {% comment %} 
+    
+    <h1>My Google OAuth Project </h1>
+    
+    {% if user.is_authenticated %}
+    <p>Welcome, You are logged in as {{ user.username }}</p>
+    
+    <a href="{% url 'logout' %}">Logout</a>
+    
+    <a href="CreateClusters/"> Create a cluster! </a>
+    {% else %}
+    <a href="{% provider_login_url 'google' %}">Login With Google</a>
+    
+    {% endif %} {% endcomment %}
+    
+    
+    {% endblock %} 
+  </body>
+  </html>
+  
