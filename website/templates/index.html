@@ -14,7 +14,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       
-      <h1 class="logo"><a href="index.html">KHOJ<span>.</span></a></h1>
+      <h1 class="logo"><a href=" ">KHOJ<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
       
@@ -38,29 +38,30 @@
     
     <section id="hero" class="d-flex align-items-center">
       <div class="container" data-aos="zoom-out" data-aos-delay="100">
-        <h1>Welcome to <span>KHOJ</span></h1>
-        
-
-        {% if user.is_authenticated %}
-        <p> You are logged in as {{ user.username }}</p>
-        
-        <div class="d-flex">
+          <h1>Welcome to <span>KHOJ</span></h1>
           
-          {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
-          <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
-        </div>             
+
+          {% if user.is_authenticated %}
+          <p> You are logged in as {{ user.username }}</p>
+          
+          <div class="d-flex">
+            
         
-        {% else %}
+            <a href="{% url 'logout' %}" class="btn-get-started scrollto">logout</a> 
+          </div>             
+          
+          {% else %}
+          
         
-        {% comment %} <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endcomment %}
-        <p> You are not logged in </p>
-        
-        <div class="d-flex">
-          {% comment %} <a href="CreateClusters/" class="btn-get-started scrollto">Create cluster</a> {% endcomment %}
-          <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
-        </div>
-        
-        {% endif %}
+          <p> You are not logged in </p>
+          
+          <div class="d-flex">
+          
+            <a href="{% provider_login_url 'google' %}" class="btn-get-started scrollto">login</a> 
+            
+          </div>
+          
+          {% endif %}
         
       </div>
       
@@ -144,24 +145,6 @@
       {% endif %}
       
     </div>
-    
-    
-    
-    
-    {% comment %} 
-    
-    <h1>My Google OAuth Project </h1>
-    
-    {% if user.is_authenticated %}
-    <p>Welcome, You are logged in as {{ user.username }}</p>
-    
-    <a href="{% url 'logout' %}">Logout</a>
-    
-    <a href="CreateClusters/"> Create a cluster! </a>
-    {% else %}
-    <a href="{% provider_login_url 'google' %}">Login With Google</a>
-    
-    {% endif %} {% endcomment %}
     
     
     {% endblock %} 
