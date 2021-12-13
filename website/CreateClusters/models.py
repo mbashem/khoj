@@ -10,7 +10,7 @@ class Clusters(models.Model):
     isScrapedCluster = models.BooleanField(default=False)
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Clusters'
         unique_together = ('cluster_id', 'cluster_name')
 
@@ -22,7 +22,7 @@ class CrawlingStrategy(models.Model):
     strategy_name = models.TextField(db_column='Strategy_Name', primary_key=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Crawling_Strategy'
 
     def __str__(self):
@@ -35,7 +35,7 @@ class UrlList(models.Model):
     url_name = models.TextField(db_column='URL_Name')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'URL_List'
 
     def __str__(self):
@@ -48,7 +48,7 @@ class ClusterStrategy(models.Model):
     strategy = models.ForeignKey('CrawlingStrategy', models.DO_NOTHING, db_column='Strategy')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Cluster_Strategy'
 
     def __str__(self):
