@@ -34,6 +34,13 @@ class main_spider(scrapy.Spider):
         for link in self.urls:
             self.urllist.append(scrapy.Request(link,callback=self.parse, cb_kwargs=dict(cnt = 1,root_url = link)))
         return self.urllist
+    
+    def follow_links(self,response,cnt,root_url):
+        for nextpage in response.css('a::attr(href)'):
+             nextpage = nextpage.get()
+             if nextpage is not None:
+                 yield scrapy.Request(response.urljoin(nextpage),callback=self.parse, cb_kwargs=dict(cnt = cnt+1,root_url = root_url))
+
                
     #This is the callback function used to process the response
     def parse(self,response,cnt,root_url):
@@ -61,10 +68,8 @@ class nonhtml_spider(main_spider):
 
         #Follow links if max depth not reached
         if(cnt<self.depth):
-            for nextpage in response.css('a::attr(href)'):
-                nextpage = nextpage.get()
-                if nextpage is not None:
-                    yield scrapy.Request(response.urljoin(nextpage),callback=self.parse, cb_kwargs=dict(cnt = cnt+1,root_url = root_url))
+            yield from self.follow_links(response,cnt,root_url)
+            
 
 #This is the crawler class for collecting pdf data
 class pdf_spider(main_spider):
@@ -105,10 +110,9 @@ class pdf_spider(main_spider):
         
 
         if(cnt<self.depth):
-            for nextpage in response.css('a::attr(href)'):
-                nextpage = nextpage.get()
-                if nextpage is not None:
-                    yield scrapy.Request(response.urljoin(nextpage),callback=self.parse, cb_kwargs=dict(cnt = cnt+1,root_url = root_url))
+            yield from self.follow_links(response,cnt,root_url)
+
+
 
 
                     
