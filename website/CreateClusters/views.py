@@ -33,7 +33,7 @@ def StoreData(request):
     PDF = request.POST.get("PDF")
     TXT = request.POST.get("TXT")
     DOCX = request.POST.get("DOCX")
-    XML = request.POST.get("XML")
+    NON_HTML = request.POST.get("NON_HTML")
     ALLTEXT = request.POST.get("ALLTEXT")
     URLS = request.POST.getlist("URLS")
     UserName = request.POST.get("username")
@@ -68,6 +68,8 @@ def StoreData(request):
         strategy_object_pdf = CrawlingStrategy.objects.get(strategy_name='.pdf')
         save_strategy_pdf = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_pdf)
         save_strategy_pdf.save()
+        print("pdf crawler started!!")
+        CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
 
     # for .txt
     if TXT == "on":
@@ -82,10 +84,11 @@ def StoreData(request):
         save_strategy_docx.save()
 
     # for .xml
-    if XML == "on":
-        strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='.xml')
+    if NON_HTML == "on":
+        strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='NON_HTML')
         save_strategy_xml = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_xml)
         save_strategy_xml.save()
+        # CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
 
     # for all text
     if ALLTEXT == "on":
@@ -93,8 +96,6 @@ def StoreData(request):
         save_strategy_all_text = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_all_text)
         save_strategy_all_text.save()
 
-    #CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
-    #CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
 
 
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
