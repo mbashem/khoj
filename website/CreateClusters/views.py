@@ -83,7 +83,7 @@ def StoreData(request):
         save_strategy_docx = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_docx)
         save_strategy_docx.save()
 
-    # for .xml
+    # for nonhtml
     if NON_HTML == "on":
         strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='NON_HTML')
         save_strategy_xml = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_xml)
@@ -95,6 +95,7 @@ def StoreData(request):
         strategy_object_all_text = CrawlingStrategy.objects.get(strategy_name='all text')
         save_strategy_all_text = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_all_text)
         save_strategy_all_text.save()
+        
 
 
 
