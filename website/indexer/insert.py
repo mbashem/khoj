@@ -26,22 +26,4 @@ def insert_into_solr_text(text: str, depth: int, url: str, page_url: str, data_t
         return False
     return True
 
-# def insert_into_solr_json(json_file: str):
-#     """
-#     For future work
-#     """
-#     send_url = f"{solr_url}/update"
-
-#     response = requests.post(send_url, json=json_file)
-
-#     response = response.json()
-    
-#     print(json_file)
-    
-#     print(response)
-    
-#     if (response["responseHeader"]["status"] >= 400):
-#         return False
-#     return True
-
-#insert_into_solr_text(text = "this is a text", depth= 2, url = "this is a url", page_url = 'This is a page url', data_type = 'non html')
+# insert_into_solr_text(text = "this is a text", depth= 2, url = "this is a url", page_url = 'This is a page url', data_type = 'text')

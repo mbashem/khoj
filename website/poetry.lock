@@ -168,6 +168,18 @@ requests = "*"
 requests-oauthlib = ">=0.3.0"
 
 [[package]]
+name = "djangorestframework"
+version = "3.13.0"
+description = "Web APIs for Django, made easy."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+django = ">=2.2"
+pytz = "*"
+
+[[package]]
 name = "h2"
 version = "3.2.0"
 description = "HTTP/2 State-Machine based protocol implementation"
@@ -663,7 +675,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "d20600f2374d6cbdc99ffc1160c52fbabf6f254c4d5a22c9a73298bd048684aa"
+content-hash = "c23ae22ab1e28b82e09b4ed8593044ab559be5d014af9ffc812e7156a73a7e2c"
 
 [metadata.files]
 asgiref = [
@@ -786,6 +798,10 @@ django = [
 ]
 django-allauth = [
     {file = "django-allauth-0.45.0.tar.gz", hash = "sha256:6d46be0e1480316ccd45476db3aefb39db70e038d2a543112d314b76bb999a4e"},
+]
+djangorestframework = [
+    {file = "djangorestframework-3.13.0-py3-none-any.whl", hash = "sha256:48e64f08244fa0df9e2b8fbd405edec263d8e1251112a06d0073b546b7c86b9c"},
+    {file = "djangorestframework-3.13.0.tar.gz", hash = "sha256:8b987d5683f5b3553dd946d4972048d3117fc526cb0bc01a3f021e81af53f39e"},
 ]
 h2 = [
     {file = "h2-3.2.0-py2.py3-none-any.whl", hash = "sha256:61e0f6601fa709f35cdb730863b4e5ec7ad449792add80d1410d4174ed139af5"},
