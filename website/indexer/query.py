@@ -49,9 +49,13 @@ def query_solr(
         response_typed.append(IndexResult(
             res["text"][0], res["depth"][0], res["url"][0], res["page_url"][0], res["data_type"][0]))
 
+    response_set = set(response_typed)
+
+    response_typed = list(response_set)
+
     return (response_typed, error)
 
 
 # res = query_solr("text", 5, ["text", "non_html"], ["this is a url"])
 # for r in res[0]:
-#     print(r.text + " " + r.url)
+#     print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
