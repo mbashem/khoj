@@ -69,13 +69,14 @@ def StoreData(request):
         save_strategy_pdf = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_pdf)
         save_strategy_pdf.save()
         print("pdf crawler started!!")
-        #CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
+        CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
 
     # for .txt
     if TXT == "on":
         strategy_object_txt = CrawlingStrategy.objects.get(strategy_name='.txt')
         save_strategy_txt = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_txt)
         save_strategy_txt.save()
+        CreateClusters.spiders.run_txtspider(URLS = URLS,height = Depth)
 
     # for .docx
     if DOCX == "on":
@@ -88,7 +89,7 @@ def StoreData(request):
         strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='NON_HTML')
         save_strategy_xml = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_xml)
         save_strategy_xml.save()
-        # CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
+        CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
 
     # for all text
     if ALLTEXT == "on":

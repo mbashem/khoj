@@ -11,7 +11,7 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.crawler import CrawlerRunner
 import fitz
 import urllib.request
-from io import BytesIO
+from io import BytesIO,StringIO
 import time
 
 
@@ -96,8 +96,6 @@ class pdf_spider(main_spider):
     
         return str
 
-
-
     def parse(self,response,cnt,root_url):
         
         yield {'url' : response.url,'depth' : cnt}
@@ -108,6 +106,38 @@ class pdf_spider(main_spider):
             yield{'pdf text' : txt}
             indexer.insert.insert_into_solr_text(txt, cnt, root_url, response.url, "pdf")
         
+
+        if(cnt<self.depth):
+            yield from self.follow_links(response,cnt,root_url)
+
+
+#This is the crawler class for collecting txt data
+class txt_spider(main_spider):
+
+    name = 'txt_spider'
+
+    def getTxt(self,link):
+         data = urllib.request.urlopen(link)
+         txt = data.read()
+         return str(txt,'UTF-8')
+
+    def istxt(self,str):
+        str  = str.split('.')
+        if(len(str)!=0 and str[-1]=='txt'):
+            return True
+        else:
+            return False
+
+
+    def parse(self,response,cnt,root_url):
+
+        yield {'url' : response.url,'depth' : cnt}
+        
+        if(self.istxt(response.url)):
+            yield {'txt':response.url,'depth':cnt}
+            txt_text = self.getTxt(response.url)
+            yield{'TXT text' : txt_text}
+            indexer.insert.insert_into_solr_text(txt_text, cnt, root_url, response.url, "txt")
 
         if(cnt<self.depth):
             yield from self.follow_links(response,cnt,root_url)
@@ -126,6 +156,11 @@ def run_nonhtmlspider(URLS,height):
 def run_pdfspider(URLS,height):
     setup()
     begin_crawl(pdf_spider,URLS=URLS,height=height)
+
+#Sets up the reactor and calls the crawler for strategy: txt text
+def run_txtspider(URLS,height):
+    setup()
+    begin_crawl(txt_spider,URLS=URLS,height=height)
 
 #Begins the crawlng process in a seperate reactor thread using Crochet
 @run_in_reactor
