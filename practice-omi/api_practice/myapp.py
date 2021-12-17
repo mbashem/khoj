@@ -1,14 +1,14 @@
 import json
 
 import requests
-
-URL = "http://127.0.0.1:8000/stuinfo/"
-
-r = requests.get(url=URL)
-
-data = r.json()
-
-print(data)
+#
+# URL = "http://127.0.0.1:8000/stuinfo/"
+#
+# r = requests.get(url=URL)
+#
+# data = r.json()
+#
+# print(data)
 
 
 # URL = "http://127.0.0.1:8000/stucreate/"
@@ -26,9 +26,9 @@ print(data)
 #
 # print(data)
 
-#
-# URL = "http://127.0.0.1:8000/stuapi/"
-#
+
+URL = "http://127.0.0.1:8000/stuapi/"
+
 # def get_data(id=None):
 #     data = {}
 #     if id is not None:
@@ -40,12 +40,12 @@ print(data)
 #     print(data)
 #
 #
-# # get_data()
+# get_data()
 #
 # def post_data():
 #     data = {
-#         'name' : 'Omi Farhan',
-#         'roll' : 200,
+#         'name' : 'Omi Farhan Ishraq',
+#         'roll' : 500,
 #         'city' : 'Cox Bazar'
 #     }
 #
@@ -57,12 +57,12 @@ print(data)
 #
 #     print(data)
 #
-# # post_data()
-#
-#
+# post_data()
+
+
 # def update_data():
 #     data = {
-#         'id' : 4,
+#         'id' : 5,
 #         'name' : 'Shakib AL Hasan',
 #         'city' : 'Cox Bazar'
 #     }
@@ -75,11 +75,13 @@ print(data)
 #
 #     print(data)
 #
-# # update_data()
-#
+# update_data()
+
+
+
 # def delete_data():
 #     data = {
-#         'id' : 4
+#         'id' : 5
 #     }
 #
 #     json_data = json.dumps(data)
