@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('', views.index),
     path('StoreData', views.StoreData),
+    # path('landingpage/', include('project_root.urls')),
 
 ]
 
