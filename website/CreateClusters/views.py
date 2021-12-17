@@ -69,7 +69,7 @@ def StoreData(request):
         save_strategy_pdf = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_pdf)
         save_strategy_pdf.save()
         print("pdf crawler started!!")
-        CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
+        #CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
 
     # for .txt
     if TXT == "on":
@@ -101,5 +101,13 @@ def StoreData(request):
 
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
 
+
+
+
+#this method updates cluster status once crawling and scraping is done
+def update_cluster_status(request, user_name, cluster_name):
+    object_of_cluster = Clusters.objects.get(user_name=user_name, cluster_name=cluster_name)
+    object_of_cluster.isScrapedCluster = True
+    object_of_cluster.save()
 
 
