@@ -110,8 +110,8 @@
 
               <tr>
 
-                <td> {{result.0}} </td>
-                <td> {{result.1}} </td>
+                <td> {{result.0}}  {% with name=result.0 %}  </td>
+                <td> {{result.1}}  <input type="hidden" name="depth" value={{result.1}}> </td>
                 <td>
                   {%if not result.2%}
 
@@ -121,23 +121,21 @@
                   <i class="fas fa-check-square"></i>
 
                   {% endif %}
-
                 </td>
-                <td>
 
-
-                  <input type="checkbox" id="select-cluster" name="selected_cluster" value={{result.0}}>
-                  <input type="hidden" name="user_name" value={{user.username}}>
-                  <input type="hidden" name="depth" value={{result.1}}>
-
-                </td>
+                <td> <input type="checkbox" id="select-cluster" name="selected_cluster" value="{{name}}" > {% endwith %} </td>
 
               </tr>
+
+
+
+              <input type="hidden" name="user_name" value={{user.username}}>
                 {% empty %}
               <tr><td colspan="4" align= "center"> You have not created any search clusters yet.</td></tr>
 
               {% endfor %}
             </tbody>
+
           </table>
       </form>
       
