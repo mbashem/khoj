@@ -35,7 +35,7 @@ def search_result(request):
     search_text = request.POST.get("search_text")
     Depth = (request.POST.get("depth"))
     UserName = request.POST.get("user_name")
-    Cluster_Name = str(request.POST.get("selected_cluster"))
+    Cluster_Name = request.POST['selected_cluster']
 
     print(search_text)
     print(Depth)
