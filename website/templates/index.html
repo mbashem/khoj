@@ -76,7 +76,7 @@
     <div class = "container" align="align-items-center">
       {% if user.is_authenticated %}
       <br>
-      <form action="#" method="get" > {% csrf_token %}
+      <form action="SearchResults/" method="post" > {% csrf_token %}
         <div class="container justify-content-center" align="center">
           <div class="row"  align="center">
             <div class="col-md-8" align="center">
@@ -125,7 +125,10 @@
                 </td>
                 <td>
 
-                  <input type="checkbox" id="select-cluster" name={{result.0}}>
+
+                  <input type="checkbox" id="select-cluster" name="selected_cluster" value={{result.0}}>
+                  <input type="hidden" name="user_name" value={{user.username}}>
+                  <input type="hidden" name="depth" value={{result.1}}>
 
                 </td>
 
