@@ -180,6 +180,14 @@ django = ">=2.2"
 pytz = "*"
 
 [[package]]
+name = "docx2txt"
+version = "0.8"
+description = "A pure python-based utility to extract text and images from docx files."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "h2"
 version = "3.2.0"
 description = "HTTP/2 State-Machine based protocol implementation"
@@ -675,7 +683,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c23ae22ab1e28b82e09b4ed8593044ab559be5d014af9ffc812e7156a73a7e2c"
+content-hash = "14b09dd6983670b6ff48ade3de4ee560e8115002cdcacbcb760c7e6cb43bd6cf"
 
 [metadata.files]
 asgiref = [
@@ -802,6 +810,9 @@ django-allauth = [
 djangorestframework = [
     {file = "djangorestframework-3.13.0-py3-none-any.whl", hash = "sha256:48e64f08244fa0df9e2b8fbd405edec263d8e1251112a06d0073b546b7c86b9c"},
     {file = "djangorestframework-3.13.0.tar.gz", hash = "sha256:8b987d5683f5b3553dd946d4972048d3117fc526cb0bc01a3f021e81af53f39e"},
+]
+docx2txt = [
+    {file = "docx2txt-0.8.tar.gz", hash = "sha256:2c06d98d7cfe2d3947e5760a57d924e3ff07745b379c8737723922e7009236e5"},
 ]
 h2 = [
     {file = "h2-3.2.0-py2.py3-none-any.whl", hash = "sha256:61e0f6601fa709f35cdb730863b4e5ec7ad449792add80d1410d4174ed139af5"},

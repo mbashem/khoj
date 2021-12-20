@@ -33,8 +33,8 @@ def StoreData(request):
     PDF = request.POST.get("PDF")
     TXT = request.POST.get("TXT")
     DOCX = request.POST.get("DOCX")
-    NON_HTML = request.POST.get("NON_HTML")
-    ALLTEXT = request.POST.get("ALLTEXT")
+    NON_HTML = request.POST.get("ALL_NON_HTML_TEXT")
+    ALLTEXT = request.POST.get("All_Text_Data")
     URLS = request.POST.getlist("URLS")
     UserName = request.POST.get("username")
 
@@ -83,10 +83,11 @@ def StoreData(request):
         strategy_object_docx = CrawlingStrategy.objects.get(strategy_name='.docx')
         save_strategy_docx = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_docx)
         save_strategy_docx.save()
+        CreateClusters.spiders.run_docxspider(URLS = URLS,height = Depth)
 
     # for nonhtml
     if NON_HTML == "on":
-        strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='NON_HTML')
+        strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='nonhtml')
         save_strategy_xml = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_xml)
         save_strategy_xml.save()
         CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
