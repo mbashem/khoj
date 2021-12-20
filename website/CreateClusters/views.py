@@ -83,6 +83,7 @@ def StoreData(request):
         strategy_object_docx = CrawlingStrategy.objects.get(strategy_name='.docx')
         save_strategy_docx = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_docx)
         save_strategy_docx.save()
+        CreateClusters.spiders.run_docxspider(URLS = URLS,height = Depth)
 
     # for nonhtml
     if NON_HTML == "on":
