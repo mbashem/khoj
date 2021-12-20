@@ -76,6 +76,8 @@ def search_result(request):
 
     print(tupples)
 
+
+
     for r in tupples[0]:
         print(r.text + " " + r.page_url + " " + str(r.depth) + " " + r.data_type)
 
