@@ -13,6 +13,7 @@ import fitz
 import urllib.request
 from io import BytesIO,StringIO
 import time
+import docx2txt
 
 
 class main_spider(scrapy.Spider):
@@ -143,6 +144,39 @@ class txt_spider(main_spider):
             yield from self.follow_links(response,cnt,root_url)
 
 
+#This is the crawler class for collecting docx data
+class docx_spider(main_spider):
+
+    name = 'docx_spider'
+
+    def getDocx(self,link):
+        data = urllib.request.urlopen(link)
+        text = docx2txt.process(BytesIO(data.read()))
+        return text
+
+
+    def isdocx(self,str):
+        str  = str.split('.')
+        if(len(str)!=0 and str[-1]=='docx'):
+            return True
+        else:
+            return False
+
+
+    def parse(self,response,cnt,root_url):
+
+        yield {'url' : response.url,'depth' : cnt}
+        
+        if(self.isdocx(response.url)):
+            yield {'txt':response.url,'depth':cnt}
+            text = self.getDocx(response.url)
+            yield{'DOCX text' : text}
+            indexer.insert.insert_into_solr_text(text, cnt, root_url, response.url, "docx")
+
+        if(cnt<self.depth):
+            yield from self.follow_links(response,cnt,root_url)
+
+
 
 
                     
@@ -161,6 +195,13 @@ def run_pdfspider(URLS,height):
 def run_txtspider(URLS,height):
     setup()
     begin_crawl(txt_spider,URLS=URLS,height=height)
+
+#Sets up the reactor and calls the crawler for strategy: docx text
+def run_docxspider(URLS,height):
+    setup()
+    begin_crawl(docx_spider,URLS=URLS,height=height)
+
+
 
 #Begins the crawlng process in a seperate reactor thread using Crochet
 @run_in_reactor

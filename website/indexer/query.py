@@ -22,11 +22,24 @@ def query_solr(
 
     solr_url = os.getenv("SOLR_URL")
 
-    sites_list = "url:(" + " or " .join(sites) + ")"
-    depth_query = "depth:[ * TO " + str(mx_depth) + " ]"
-    strategy = "data_type:(" + " or ".join(strategy) + ")"
+    newsite = []
+    
+    for site in sites:
+        site = "\"" + site + "\""
+        newsite.append(site)
+        
+    newstrategy = []
+    
+    for stra in strategy:
+        stra = "\"" + stra + "\""
+        newstrategy.append(stra)
 
-    payload = f"q=text:{key}~&fq={sites_list}&fq={depth_query}&fq={strategy}"
+
+    sites_list = "url:(" + " or " .join(newsite) + ")"
+    depth_query = "depth:[ * TO " + str(mx_depth) + " ]"
+    strategy_list = "data_type:(" + " or ".join(newstrategy) + ")"
+
+    payload = f"q=text:{key}~&fq={sites_list}&fq={depth_query}&fq={strategy_list}"
 
     url = f"{solr_url}/select?{payload}&indent=false&q.op=OR&q=*%3A*&start={start}&row={row}"
 
@@ -56,6 +69,7 @@ def query_solr(
     return (response_typed, error)
 
 
-# res = query_solr("text", 5, ["text", "non_html"], ["this is a url"])
+# res = query_solr("antontrygubO_o", 2, ["nonhtml"], ["https://codeforces.com/blog/entry/97956"])
 # for r in res[0]:
 #     print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
+# print(res)
