@@ -34,43 +34,42 @@ def index(request):
 
 def search_result(request):
 
+  
+     
+        
     # received value through html form
-    search_text = request.POST.get("search_text")
-    Depth = (request.POST.get("depth"))
-    UserName = request.POST.get("user_name")
-    Cluster_Name = request.POST.get("selected_cluster")
+        search_text = request.POST.get("search_text")
+        Depth = (request.POST.get("depth"))
+        UserName = request.POST.get("user_name")
+        Cluster_Name = request.POST.get("selected_cluster")
 
-    print(search_text)
-    print(Depth)
-    print(UserName)
-    print(Cluster_Name)
+        # print(search_text)
+        # print(Depth)
+        # print(UserName)
+        # print(Cluster_Name)
 
-    # query to get strategy list of the selected cluster
+        # query to get strategy list of the selected cluster
 
-    obj_of_cluster = Clusters.objects.get(user_name=request.user.username, cluster_name=Cluster_Name)
+        obj_of_cluster = Clusters.objects.get(user_name=request.user.username, cluster_name=Cluster_Name)
 
-    cluster_id = obj_of_cluster.cluster_id
+        cluster_id = obj_of_cluster.cluster_id
 
-    list_of_strategy = list(ClusterStrategy.objects.filter(cluster=cluster_id).values_list('strategy', flat=True))
-
-
-    print(list_of_strategy)
+        list_of_strategy = list(ClusterStrategy.objects.filter(cluster=cluster_id).values_list('strategy', flat=True))
 
 
-    # query to get url list of the selected cluster
-
-    obj_of_cluster = Clusters.objects.get(user_name=request.user.username, cluster_name=Cluster_Name)
-
-    cluster_id = obj_of_cluster.cluster_id
-
-    list_of_urls = list(UrlList.objects.filter(cluster=cluster_id).values_list('url_name', flat=True))
+        print(list_of_strategy)
 
 
+        # query to get url list of the selected cluster
 
-    print(list_of_urls)
+        obj_of_cluster = Clusters.objects.get(user_name=request.user.username, cluster_name=Cluster_Name)
 
-    tupples = query_solr(search_text, Depth, list_of_strategy, list_of_urls)
+        cluster_id = obj_of_cluster.cluster_id
 
+        list_of_urls = list(UrlList.objects.filter(cluster=cluster_id).values_list('url_name', flat=True))
+
+
+<<<<<<< Updated upstream
     # for r in tupples[0]:
     #     print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
 
@@ -82,13 +81,29 @@ def search_result(request):
         print(r.text + " " + r.page_url + " " + str(r.depth) + " " + r.data_type)
 
     #return render(request, 'page.html', tupples)
+=======
+>>>>>>> Stashed changes
+
+        print(list_of_urls)
+
+        tupples = query_solr(search_text, Depth, list_of_strategy, list_of_urls)
+
+        
+     
+        # for r in tupples[0]:
+        #     print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
+
+        print(tupples)
+
+        show_search=[]
+
+        for r in tupples[0]:
+            print(r.text + " " + r.page_url + " " + str(r.depth) + " " + r.data_type)
+            
+            show_search.append(((r.text), ( r.page_url)))
 
 
+        # return render(request, 'index.html', {'msg':show_search})
 
-
-
-
-
-
-
+        return render(request, 'index.html', {'msg' : dict(show_search)})
 

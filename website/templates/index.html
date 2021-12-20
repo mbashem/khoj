@@ -160,13 +160,20 @@
     </tr>
   </thead>
   <tbody>
+
+    {% for key, value in msg.items%}
     <tr>
+      
      
-      <td>Mark</td>
-      <td>Otto</td>
+      <td>  {{ key }} </td> 
+      <td>  <a href="value" target="_blank"> {{value}}</a> </td>
+
    
     </tr>
+     {% endfor %}
   </tbody>
+ 
+
 </table>
     
       
