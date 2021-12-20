@@ -10,6 +10,9 @@ from auth_app import *
 from django.http import  HttpResponse
 from CreateClusters.models import *
 from auth_app.models import *
+from indexer.query import *
+
+from indexer.IndexResult import *
 
 def index(request):
 
@@ -35,7 +38,7 @@ def search_result(request):
     search_text = request.POST.get("search_text")
     Depth = (request.POST.get("depth"))
     UserName = request.POST.get("user_name")
-    Cluster_Name = request.POST['selected_cluster']
+    Cluster_Name = request.POST.get("selected_cluster")
 
     print(search_text)
     print(Depth)
@@ -48,7 +51,8 @@ def search_result(request):
 
     cluster_id = obj_of_cluster.cluster_id
 
-    list_of_strategy = ClusterStrategy.objects.filter(cluster=cluster_id).values_list('strategy')
+    list_of_strategy = list(ClusterStrategy.objects.filter(cluster=cluster_id).values_list('strategy', flat=True))
+
 
     print(list_of_strategy)
 
@@ -59,9 +63,21 @@ def search_result(request):
 
     cluster_id = obj_of_cluster.cluster_id
 
-    list_of_urls = UrlList.objects.filter(cluster=cluster_id).values_list('url_name')
+    list_of_urls = list(UrlList.objects.filter(cluster=cluster_id).values_list('url_name', flat=True))
+
+
 
     print(list_of_urls)
+
+    tupples = query_solr(search_text, Depth, list_of_strategy, list_of_urls)
+
+    # for r in tupples[0]:
+    #     print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
+
+    print(tupples)
+
+
+
 
 
 
