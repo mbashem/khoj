@@ -22,7 +22,7 @@ def query_solr(
 
     solr_url = os.getenv("SOLR_URL")
 
-    sites_list = "url:(" + " or ".join(sites) + ")"
+    sites_list = "url:(" + " or " .join(sites) + ")"
     depth_query = "depth:[ * TO " + str(mx_depth) + " ]"
     strategy = "data_type:(" + " or ".join(strategy) + ")"
 
