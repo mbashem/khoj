@@ -56,6 +56,8 @@ def query_solr(
     return (response_typed, error)
 
 
-# res = query_solr("text", 5, ["text", "non_html"], ["this is a url"])
+res = query_solr("Born:", 2, ["nonhtml"], ["https://quotes.toscrape.com/tag/life/"])
 # for r in res[0]:
-#     print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
+
+    # print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
+print(res)

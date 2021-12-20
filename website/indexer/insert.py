@@ -26,4 +26,4 @@ def insert_into_solr_text(text: str, depth: int, url: str, page_url: str, data_t
         return False
     return True
 
-# insert_into_solr_text(text = "this is a text", depth= 2, url = "this is a url", page_url = 'This is a page url', data_type = 'text')
+# insert_into_solr_text(text = "this is a text", depth= 2, url = "https://quotes.toscrape.com/", page_url = 'https://quotes.toscrape.com/', data_type = 'text')
