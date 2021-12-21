@@ -85,8 +85,14 @@ def search_result(request):
 
         for r in tupples[0]:
             print(r.text + " " + r.page_url + " " + str(r.depth) + " " + r.data_type)
+
+            result_text = r.text
+
+            find_text = result_text.find(search_text)
+
+            send_text = result_text[max(0,find_text-100):200]
             
-            show_search.append(((r.text), ( r.page_url)))
+            show_search.append(((send_text), ( r.page_url)))
 
 
         # return render(request, 'index.html', {'msg':show_search})
