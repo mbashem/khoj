@@ -69,20 +69,6 @@ def search_result(request):
         list_of_urls = list(UrlList.objects.filter(cluster=cluster_id).values_list('url_name', flat=True))
 
 
-<<<<<<< Updated upstream
-    # for r in tupples[0]:
-    #     print(r.text + " " + r.url + " " + str(r.depth) + " " + r.data_type)
-
-    print(tupples)
-
-
-
-    for r in tupples[0]:
-        print(r.text + " " + r.page_url + " " + str(r.depth) + " " + r.data_type)
-
-    #return render(request, 'page.html', tupples)
-=======
->>>>>>> Stashed changes
 
         print(list_of_urls)
 
@@ -99,11 +85,17 @@ def search_result(request):
 
         for r in tupples[0]:
             print(r.text + " " + r.page_url + " " + str(r.depth) + " " + r.data_type)
+
+            result_text = r.text
+
+            find_text = result_text.find(search_text)
+
+            send_text = result_text[max(0,find_text-100):200]
             
-            show_search.append(((r.text), ( r.page_url)))
+            show_search.append(((send_text), ( r.page_url)))
 
 
         # return render(request, 'index.html', {'msg':show_search})
 
-        return render(request, 'index.html', {'msg' : dict(show_search)})
+        return render(request, 'search.html', {'msg' : dict(show_search)})
 
