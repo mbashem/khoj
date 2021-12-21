@@ -97,5 +97,5 @@ def search_result(request):
 
         # return render(request, 'index.html', {'msg':show_search})
 
-        return render(request, 'index.html', {'msg' : dict(show_search)})
+        return render(request, 'search.html', {'msg' : dict(show_search)})
 

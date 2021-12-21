@@ -26,5 +26,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('logout', LogoutView.as_view(), name="logout"),
     path('CreateClusters/', include('CreateClusters.urls')),
-    path('SearchResults/', views.search_result)
+    path('SearchResults/', views.search_result),
+    path('SearchResults/index/', views.index)
 ]

@@ -90,7 +90,7 @@
         </div> <br> <br>
       
       
-        <h2 align="center"> Here are the list of your Clusters! </h2> <br> <br> <br>
+        <h2 align="center"> Here are the lists of your Clusters! </h2> <br> <br> <br>
       
       
           <table class="table table-bordered">
@@ -147,35 +147,7 @@
 
        <br> <br>
 
-       <h2 align="center"> Here are the result of your search! </h2>
-
-
-    <table class="table table-bordered">
-  <thead>
-    <tr>
-      
-      <th scope="col">Text</th>
-      <th scope="col">URL</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-
-    {% for key, value in msg.items%}
-    <tr>
-      
-     
-      <td>  {{ key }} </td> 
-      <td>  <a href={{value}} target="_blank"> {{value}}</a> </td>
-
-   
-    </tr>
-     {% endfor %}
-  </tbody>
- 
-
-</table>
-    
+  
       
     </div>
    
