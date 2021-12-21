@@ -104,10 +104,6 @@ def StoreData(request):
             CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
 
 
-        
-
-
-
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
 
 
