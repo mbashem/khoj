@@ -64,44 +64,45 @@ def StoreData(request):
         insert_url.save()
 
     # for all text
-    if ALLTEXT == "on":
-        strategy_object_all_text = CrawlingStrategy.objects.get(strategy_name='all text')
-        save_strategy_all_text = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_all_text)
-        save_strategy_all_text.save()
-        CreateClusters.spiders.run_pdfspider(URLS=URLS, height=Depth)
-        CreateClusters.spiders.run_txtspider(URLS=URLS, height=Depth)
-        CreateClusters.spiders.run_docxspider(URLS=URLS, height=Depth)
-        CreateClusters.spiders.run_nonhtmlspider(URLS=URLS, height=Depth)
+    # if ALLTEXT == "on":
+    #     strategy_object_all_text = CrawlingStrategy.objects.get(strategy_name='all text')
+    #     save_strategy_all_text = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_all_text)
+    #     save_strategy_all_text.save()
+    #     CreateClusters.spiders.run_pdfspider(URLS=URLS, height=Depth)
+    #     CreateClusters.spiders.run_txtspider(URLS=URLS, height=Depth)
+    #     CreateClusters.spiders.run_docxspider(URLS=URLS, height=Depth)
+    #     CreateClusters.spiders.run_nonhtmlspider(URLS=URLS, height=Depth)
+    #
+    # else:
 
-    else:
-        #for .pdf
-        if PDF == "on":
-            strategy_object_pdf = CrawlingStrategy.objects.get(strategy_name='.pdf')
-            save_strategy_pdf = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_pdf)
-            save_strategy_pdf.save()
-            print("pdf crawler started!!")
-            CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
+    #for .pdf
+    if PDF == "on":
+        strategy_object_pdf = CrawlingStrategy.objects.get(strategy_name='.pdf')
+        save_strategy_pdf = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_pdf)
+        save_strategy_pdf.save()
+        print("pdf crawler started!!")
+        CreateClusters.spiders.run_pdfspider(URLS = URLS,height = Depth)
 
         # for .txt
-        if TXT == "on":
-            strategy_object_txt = CrawlingStrategy.objects.get(strategy_name='.txt')
-            save_strategy_txt = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_txt)
-            save_strategy_txt.save()
-            CreateClusters.spiders.run_txtspider(URLS = URLS,height = Depth)
+    if TXT == "on":
+        strategy_object_txt = CrawlingStrategy.objects.get(strategy_name='.txt')
+        save_strategy_txt = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_txt)
+        save_strategy_txt.save()
+        CreateClusters.spiders.run_txtspider(URLS = URLS,height = Depth)
 
         # for .docx
-        if DOCX == "on":
-            strategy_object_docx = CrawlingStrategy.objects.get(strategy_name='.docx')
-            save_strategy_docx = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_docx)
-            save_strategy_docx.save()
-            CreateClusters.spiders.run_docxspider(URLS = URLS,height = Depth)
+    if DOCX == "on":
+        strategy_object_docx = CrawlingStrategy.objects.get(strategy_name='.docx')
+        save_strategy_docx = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_docx)
+        save_strategy_docx.save()
+        CreateClusters.spiders.run_docxspider(URLS = URLS,height = Depth)
 
-        # for nonhtml
-        if NON_HTML == "on":
-            strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='nonhtml')
-            save_strategy_xml = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_xml)
-            save_strategy_xml.save()
-            CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
+    # for nonhtml
+    if NON_HTML == "on":
+        strategy_object_xml = CrawlingStrategy.objects.get(strategy_name='nonhtml')
+        save_strategy_xml = ClusterStrategy(cluster=Cluster_object, strategy=strategy_object_xml)
+        save_strategy_xml.save()
+        CreateClusters.spiders.run_nonhtmlspider(URLS = URLS,height = Depth)
 
 
     return render(request, 'CreateClusters/ClusterIndex.html', {'msg' : 'cluster created successfully. System will let you know when it is ready to search'})
