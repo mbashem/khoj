@@ -10,13 +10,6 @@ from .serializer import *
 from django.views import View
 
 
-def index(request):
-    return HttpResponse("This is api app")
-
-
-
-
-
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = AuthUser.objects.filter(username='farhan_ishraq_omi')
     serializer_class = AuthUserSerializer

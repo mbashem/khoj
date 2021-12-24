@@ -1,0 +1,3 @@
+
+URL = "http://127.0.0.1:8000/API/cluster_get/<username>"  --> This url returns all the clusters a user has been. <username> is the username of the user.
+
