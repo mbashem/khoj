@@ -32,6 +32,24 @@ def index(request):
         return render(request, 'index.html', params)
 
 
+# query to get cluster_id of the selected clusters
+def get_cluster_id(username, cluster_name):
+    obj_of_cluster = Clusters.objects.get(user_name=username, cluster_name=cluster_name)
+    cluster_id = obj_of_cluster.cluster_id
+    return cluster_id
+
+
+# query to get strategy list of the selected cluster
+def get_list_of_strategy(cluster_id):
+    list_of_strategy = list(ClusterStrategy.objects.filter(cluster=cluster_id).values_list('strategy', flat=True))
+    return list_of_strategy
+
+
+# query to get strategy list of urls of the selected cluster
+def get_list_of_urls(cluster_id):
+    list_of_urls = list(UrlList.objects.filter(cluster=cluster_id).values_list('url_name', flat=True))
+    return list_of_urls
+
 def search_result(request):
     # received value through html form
     search_text = request.POST.get("search_text")
@@ -46,17 +64,16 @@ def search_result(request):
 
     show_search = []
 
-    # query to get strategy list of the selected cluster
+    # query to get strategy, urls list of the selected cluster
     for (i, j) in zip(Cluster_Name, Depth):
-        obj_of_cluster = Clusters.objects.get(user_name=request.user.username, cluster_name=i)
-        cluster_id = obj_of_cluster.cluster_id
-        list_of_strategy = list(ClusterStrategy.objects.filter(cluster=cluster_id).values_list('strategy', flat=True))
+
+        cluster_id = get_cluster_id(request.user.username, i)
+
+        list_of_strategy = get_list_of_strategy(cluster_id)
         print(list_of_strategy)
 
-        # query to get url list of the selected cluster
-        obj_of_cluster = Clusters.objects.get(user_name=request.user.username, cluster_name=i)
-        cluster_id = obj_of_cluster.cluster_id
-        list_of_urls = list(UrlList.objects.filter(cluster=cluster_id).values_list('url_name', flat=True))
+
+        list_of_urls = get_list_of_urls(cluster_id)
         print(list_of_urls)
 
         tupples = query_solr(search_text, j, list_of_strategy, list_of_urls)

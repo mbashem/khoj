@@ -18,7 +18,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class ClusterViewSet(viewsets.ViewSet):
-     # lookup_field = 'cluster_id'
+
      def list(self, request):
          clusters = Clusters.objects.all()
          serializers = ClustersSerializer(clusters, many=True)
