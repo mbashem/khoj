@@ -6,8 +6,22 @@ from rest_framework import viewsets
 
 from CreateClusters.models import Clusters
 from .serializer import *
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 
 from django.views import View
+
+
+
+
+@api_view()
+@permission_classes([AllowAny])
+def search_result_api(request):
+    print(request.query_params)
+    return Response({'msg': 'here is the request'})
+
+
+
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -30,9 +44,6 @@ class ClusterViewSet(viewsets.ViewSet):
              clusters = Clusters.objects.filter(user_name = id)
              serializers = ClustersSerializer(clusters, many=True)
              return Response(serializers.data)
-
-
-
 
 
 
