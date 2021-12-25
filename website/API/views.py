@@ -11,14 +11,29 @@ from rest_framework.permissions import AllowAny
 
 from django.views import View
 
+from project_root.views import *
 
-
-
+#this api method privodes the search results of a text as a dictionary
 @api_view()
 @permission_classes([AllowAny])
 def search_result_api(request):
-    print(request.query_params)
-    return Response({'msg': 'here is the request'})
+
+    # print(request.query_params)
+
+    user_name = request.query_params['user_name']
+    depth = request.query_params.getlist('depth')
+    search_text = request.query_params['searchtext']
+    clusters = request.query_params.getlist('clusters')
+
+    # print(user_name)
+    # print(depth)
+    # print(search_text)
+    # print(clusters)
+
+    api_result = find_text(user_name, clusters, depth, search_text)
+
+
+    return Response({'msg': dict(api_result)})
 
 
 
@@ -30,7 +45,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 
-
+# api viewset for showing all the clusters of a user
 class ClusterViewSet(viewsets.ViewSet):
 
      def list(self, request):
