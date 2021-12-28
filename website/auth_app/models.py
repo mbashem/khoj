@@ -1,3 +1,4 @@
+from django.contrib.auth.models import UserManager
 from django.db import models
 
 # Create your models here.
@@ -76,6 +77,7 @@ class AuthUser(models.Model):
     is_staff = models.BooleanField()
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
+
 
     class Meta:
         managed = False
