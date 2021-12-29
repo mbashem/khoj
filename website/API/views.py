@@ -1,17 +1,17 @@
-
-from django.http import HttpResponse
-
-from rest_framework.response import Response
+import jwt as jwt
 from rest_framework import viewsets
-
-from CreateClusters.models import Clusters
-from .serializer import *
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
-
-from django.views import View
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from project_root.views import *
+from .serializer import *
+
+from rest_framework import status
+
 
 #this api method privodes the search results of a text as a dictionary
 @api_view()
@@ -86,35 +86,3 @@ class ClusterViewSet(viewsets.ViewSet):
 
 
 
-
-
-
-#
-# @api_view(['GET'])
-# def get_cluster(request):
-#     if request.method == 'GET':
-#         user_name = request.data.get('user_name')
-#
-#         if user_name is not None:
-#             print(user_name)
-#             clusters_list = list(Clusters.objects.filter(user_name=user_name).values_list('cluster_name', 'depth', 'isScrapedCluster'))
-#             serializers = ClustersSerializer(clusters_list, many=True)
-#             print(serializers.data)
-#             return Response(serializers.data)
-
-#
-# def get_cluster(self, request, *args, **kwargs):
-#     json_data = request.body
-#     stream = io.BytesIO(json_data)
-#     python_data = JSONParser().parse(stream)
-#
-#     user_name = python_data.get('user_name', None)
-#     print(user_name)
-#
-#     if user_name is not None:
-#         clusters_list = Clusters.objects.filter(user_name=user_name).values_list('cluster_name', 'depth',
-#                                                                                  'isScrapedCluster')
-#         print(clusters_list)
-#         serializers = ClustersSerializer(clusters_list, many=True)
-#         json_data = JSONRenderer().render(serializers.data)
-#         return HttpResponse(json_data, content_type='application/json')

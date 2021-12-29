@@ -3,6 +3,10 @@ from rest_framework import serializers
 from auth_app.models import *
 from CreateClusters.models import *
 
+from rest_framework.exceptions import AuthenticationFailed
+import os
+
+
 
 class ClustersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,7 +19,6 @@ class AuthUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuthUser
         fields = ['username', 'user_has_clusters']
-
 
 
 
