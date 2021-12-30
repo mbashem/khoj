@@ -37,8 +37,8 @@ class SearchActivity : AppCompatActivity() {
         val account = GoogleSignIn.getLastSignedInAccount(this)
 //        updateUI(account)
 
-        if(account != null) {
-            Log.e("WTF:", "WTF")
+        if(account == null) {
+            Log.e("SearchActivity:", "active")
         }
 
         val signOutButton = findViewById<Button>(R.id.sign_out_button)

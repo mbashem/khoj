@@ -18,13 +18,16 @@ import com.github.kittinunf.fuel.Fuel
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.json.jsonDeserializer
 import com.github.kittinunf.result.Result;
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
-    public  lateinit var mGoogleSignInClient : GoogleSignInClient
+    public lateinit var mGoogleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 7
 
-    private val webApplicationClientId = "929445193196-i10lnio3bchmjp5bhc1ads8hikrej38s.apps.googleusercontent.com"
+    private val webApplicationClientId =
+        "929445193196-i10lnio3bchmjp5bhc1ads8hikrej38s.apps.googleusercontent.com"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,17 +53,18 @@ class MainActivity : AppCompatActivity() {
         val account = GoogleSignIn.getLastSignedInAccount(this)
 //        updateUI(account)
 
-        if(account != null) {
+        if (account != null) {
             Log.e("WTF:", "WTF")
         }
 
         val signInButton = findViewById<SignInButton>(R.id.sign_in_button)
         signInButton.setSize(SignInButton.SIZE_STANDARD)
 
-        signInButton.setOnClickListener(object : View.OnClickListener{
+        signInButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 signIn()
-            }})
+            }
+        })
 //        findViewById(R.id.sign_in_button).setOnClickListener(this);
     }
 
@@ -96,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
                 val site_url = "http://10.0.2.2:8000/API/verify_user/?id_token=" + idToken
 
-                Log.d("url",site_url)
+                Log.d("url", site_url)
 
                 Fuel.get(site_url)
                     .response { request, response, result ->
@@ -110,28 +114,50 @@ class MainActivity : AppCompatActivity() {
                             is Result.Failure -> {
                                 val ex = result.getException()
                                 println(ex)
-                                Toast.makeText(this,"Error. Note: Only sign in allowed", Toast.LENGTH_SHORT ).show()
+                                Toast.makeText(
+                                    this,
+                                    "Error. Note: Only sign in allowed",
+                                    Toast.LENGTH_SHORT
+                                ).show()
 
                             }
                             is Result.Success -> {
+
                                 val data = result.get()
                                 println(data)
-                                Log.d("Token:", idToken)
+                                val myBody = String(response.data)
+                                val status = JSONObject(String(response.data)).getString("status")
+                                if (status == "OK") {
+                                    val username =
+                                        JSONObject(String(response.data)).getString("username")
 
-                                Toast.makeText(this,"User email: "+ personEmail, Toast.LENGTH_SHORT ).show()
+                                    Log.d("response", myBody)
+                                    Log.d("Token:", idToken)
 
-                                var changePage = Intent(this,SearchActivity::class.java)
+                                    println(response.body().toString())
 
-                                changePage.putExtra("username", personName)
-                                changePage.putExtra("token", idToken)
+                                    Toast.makeText(
+                                        this,
+                                        "User email: " + personEmail,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
 
-                                startActivity(changePage)
+                                    var changePage = Intent(this, SearchActivity::class.java)
+
+                                    changePage.putExtra("username", username)
+                                    changePage.putExtra("token", idToken)
+
+                                    startActivity(changePage)
+                                } else {
+                                    Toast.makeText(
+                                        this,
+                                        "Error. Note: Only sign in allowed",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
                         }
                     }
-
-
-
 
 
             }
@@ -139,7 +165,7 @@ class MainActivity : AppCompatActivity() {
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.e( "Message" , e.toString())
+            Log.e("Message", e.toString())
         }
     }
 }
