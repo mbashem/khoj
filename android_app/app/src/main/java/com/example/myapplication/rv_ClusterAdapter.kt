@@ -1,9 +1,12 @@
-package com.example.android_practice
+package com.example.myapplication
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 
@@ -13,20 +16,23 @@ import com.example.myapplication.R
 
 class rv_ClusterAdapter(val datalist : MutableList<Cluster>) : RecyclerView.Adapter<rv_ClusterAdapter.ViewHolder>() {
 
-    class ViewHolder(itemview : View) : RecyclerView.ViewHolder(itemview){
+    class ViewHolder( val itemview : View) : RecyclerView.ViewHolder(itemview){
         val clusterName = itemview.findViewById<TextView>(R.id.Cluster_Name)
         val clusterStrat = itemview.findViewById<TextView>(R.id.Cluster_Strategy)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(inflater.inflate(R.layout.cluster_rv_layout,parent,false))
+        val view = inflater.inflate(R.layout.cluster_rv_layout,parent,false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val clusterItem = datalist[position]
         holder.clusterName.setText(clusterItem.name)
         holder.clusterStrat.setText(clusterItem.strats)
+
+
     }
 
     override fun getItemCount(): Int {
