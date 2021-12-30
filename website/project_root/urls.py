@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
+
+
 from project_root import views
+
+
 
 urlpatterns = [
     #path('', TemplateView.as_view(template_name="index.html")),
@@ -27,5 +31,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(), name="logout"),
     path('CreateClusters/', include('CreateClusters.urls')),
     path('SearchResults/', views.search_result),
-    path('SearchResults/index/', views.index)
+    path('API/', include('API.urls'))
+
 ]
