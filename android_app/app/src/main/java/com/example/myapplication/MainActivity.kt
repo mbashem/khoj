@@ -112,6 +112,7 @@ class MainActivity : AppCompatActivity() {
 //                        }
                         when (result) {
                             is Result.Failure -> {
+                                mGoogleSignInClient.signOut()
                                 val ex = result.getException()
                                 println(ex)
                                 Toast.makeText(
@@ -149,6 +150,7 @@ class MainActivity : AppCompatActivity() {
 
                                     startActivity(changePage)
                                 } else {
+                                    mGoogleSignInClient.signOut()
                                     Toast.makeText(
                                         this,
                                         "Error. Note: Only sign in allowed",
