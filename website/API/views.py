@@ -1,11 +1,6 @@
-import jwt as jwt
-from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from allauth.socialaccount.providers.oauth2.client import OAuth2Client
-from rest_auth.registration.views import SocialLoginView
+
 from rest_framework import viewsets
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.exceptions import AuthenticationFailed
-from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -15,7 +10,7 @@ from .serializer import *
 import json
 import requests
 
-from rest_framework import status
+
 
 
 #this api method privodes the search results of a text as a dictionary
@@ -65,11 +60,7 @@ class ClusterViewSet(viewsets.ViewSet):
              serializers = ClustersSerializer(clusters, many=True)
              return Response(serializers.data)
 
-class GoogleLogin(SocialLoginView):
-    """Google login endpoint"""
-    adapter_class = GoogleOAuth2Adapter
-    client_class = OAuth2Client
-    callback_url = 'http://127.0.0.1:8000/accounts/google/login/callback/'
+
 
 
 @api_view()
@@ -77,31 +68,38 @@ class GoogleLogin(SocialLoginView):
 def verify_user(request):
 
     id_token = request.query_params['id_token']
+    try:
 
-    URL = 'https://oauth2.googleapis.com/tokeninfo?id_token=' + id_token
+        URL = 'https://oauth2.googleapis.com/tokeninfo?id_token=' + id_token
 
-    headers = {'content-Type': 'application/json'}
+        headers = {'content-Type': 'application/json'}
 
-    r = requests.get(url=URL, headers=headers)
+        r = requests.get(url=URL, headers=headers)
+        data = r.json()
 
-    data = r.json()
+        print(data)
 
-    print(data)
+        user_email = data['email']
 
-    user_email = data['email']
+        print(user_email)
 
-    print(user_email)
+        is_user_exists = AuthUser.objects.filter(email=user_email).first()
 
-    is_user_exists = AuthUser.objects.filter(email=user_email).first()
+        if is_user_exists is not None:
 
-    if is_user_exists is not None:
+            user_name = is_user_exists.username
+            print(user_name)
+            values = {'status': "OK", "username": user_name}
+            return Response({'status' : 'OK', 'username' : user_name})
 
-        user_name = is_user_exists.username
-        print(user_name)
-        values = {'status': "OK", "username": user_name}
-        return Response({'status' : 'OK', 'username' : user_name})
+        return Response({'status':'Failed!'})
 
-    return Response({'status':'Failed!'})
+    except:
+
+        return Response({'status': 'FAILED'})
+
+
+
 
 
 
