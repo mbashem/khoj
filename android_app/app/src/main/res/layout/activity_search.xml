@@ -18,10 +18,19 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/go_khoj"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:text="KHOJ" />
+
+            <Button
                 android:id="@+id/sign_out_button"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Sign Out" />
+
 
             <TextView
                 android:id="@+id/textView2"
@@ -31,6 +40,7 @@
                 android:gravity="right"
                 android:paddingRight="26dip"
                 android:text="TextView" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

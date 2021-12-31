@@ -1,4 +1,4 @@
-package com.example.android_practice
+package com.example.myapplication
 
 class Cluster(val name:String, val strats:String) {
 

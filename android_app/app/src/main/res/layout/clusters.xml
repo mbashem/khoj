@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange_dark"
+
     tools:context=".ClusterActivity">
 
 
@@ -12,6 +12,7 @@
         android:id="@+id/rvClusterList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -21,12 +22,12 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:padding="5dp"
-        android:text="Welcome to KHOJ"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Select a cluster to search"
+        android:textSize="20sp"
         android:textColor="@color/white"
-        android:background="@color/primary_dark"
+        android:background="@color/purple_500"
         android:fontFamily="monospace"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
