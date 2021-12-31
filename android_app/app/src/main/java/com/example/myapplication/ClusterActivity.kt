@@ -21,7 +21,7 @@ class ClusterActivity : AppCompatActivity() {
 
         cluster_list.add(Cluster("Cluster 1","pdf,docx"))
         cluster_list.add(Cluster("Cluster 2","pdf,nonhtml"))
-        cluster_list.add(Cluster("Cluster 1","nonhtml,pdf,docx,txt"))
+        cluster_list.add(Cluster("Cluster 3","nonhtml,pdf,docx,txt"))
 
 
         val rv_cluster = findViewById<View>(R.id.rvClusterList) as RecyclerView
