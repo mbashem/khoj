@@ -104,12 +104,6 @@ class MainActivity : AppCompatActivity() {
 
                 Fuel.get(site_url)
                     .response { request, response, result ->
-//                        println(request)
-//                        println(response)
-//                        val (bytes, error) = result
-//                        if (bytes != null) {
-//                            println("[response bytes] ${String(bytes)}")
-//                        }
                         when (result) {
                             is Result.Failure -> {
                                 mGoogleSignInClient.signOut()
