@@ -30,11 +30,7 @@
         android:paddingStart="4dp"
         android:text="Cluster Strats"
         android:textStyle="bold|italic" />
-    <Button
-        android:id="@+id/rvItemButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select" />
+
 
 
 

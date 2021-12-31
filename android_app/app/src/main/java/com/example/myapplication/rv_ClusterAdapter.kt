@@ -31,7 +31,8 @@ class rv_ClusterAdapter(val datalist : MutableList<Cluster>) : RecyclerView.Adap
         val clusterItem = datalist[position]
         holder.clusterName.setText(clusterItem.name)
         holder.clusterStrat.setText(clusterItem.strats)
-
+        holder.itemview.setOnClickListener() {
+            holder.itemview.context.startActivity(Intent(holder.itemview.context,ClusterSearchActivity::class.java)) }
 
     }
 
@@ -40,3 +41,6 @@ class rv_ClusterAdapter(val datalist : MutableList<Cluster>) : RecyclerView.Adap
     }
 
 }
+
+
+
