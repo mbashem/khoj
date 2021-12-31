@@ -3,10 +3,6 @@ from rest_framework import serializers
 from auth_app.models import *
 from CreateClusters.models import *
 
-from rest_framework.exceptions import AuthenticationFailed
-import os
-
-
 
 class ClustersSerializer(serializers.ModelSerializer):
     class Meta:
