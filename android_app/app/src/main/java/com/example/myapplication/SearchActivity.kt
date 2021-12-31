@@ -36,7 +36,8 @@ class SearchActivity : AppCompatActivity() {
 
         mTextview = findViewById(R.id.textView2);
 
-        mTextview.setText(getIntent().getStringExtra("username"));
+        val username = getIntent().getStringExtra("username");
+        mTextview.setText(username);
 
         val account = GoogleSignIn.getLastSignedInAccount(this)
 //        updateUI(account)
@@ -55,7 +56,10 @@ class SearchActivity : AppCompatActivity() {
             }})
 
         go_khojButton.setOnClickListener{
-            startActivity(Intent(this,ClusterActivity::class.java))
+            var changePage = Intent(this,ClusterActivity::class.java)
+
+            changePage.putExtra("username", username)
+            startActivity(changePage)
         }
 
 
