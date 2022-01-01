@@ -2,27 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/thisview"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    android:padding="4dp"
+    android:background="@color/primary_dark"
     android:orientation="vertical"
     android:gravity="center">
 
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Button" />
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Button2" />
+        <EditText
+            android:id="@+id/editTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:layout_marginStart="10dp"
+            android:background="@color/grey"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="" />
+        <Button
+            android:id="@+id/ClusterSearchButton"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/orange_dark"
+            android:layout_height="wrap_content"
+            android:text="Search"/>
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
