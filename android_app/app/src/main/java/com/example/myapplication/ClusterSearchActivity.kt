@@ -45,8 +45,6 @@ class ClusterSearchActivity : AppCompatActivity() {
                 //do api call here then populate SearcResultList with SearchResult objects
 
                 val SearchResultList = mutableListOf<SearchResult>()
-                SearchResultList.add(SearchResult("A url","A text"))
-                SearchResultList.add(SearchResult("A url 2","A text 2"))
 
                 val site_url = "http://10.0.2.2:8000/API/searchtext/?user_name=${username}&clusters=${cluster_name}&depth=${depth}&searchtext=${searchtext.text.toString()}"
 
@@ -64,11 +62,15 @@ class ClusterSearchActivity : AppCompatActivity() {
                             }
                             is Result.Success -> {
 
-                                var st = JSONObject( String(response.data))
+                                var st = String(response.data);
 
-                                var msg = (st.get("msg"))
+                                var a = JSONArray(st)
 
-                                println(msg)
+                                for(i in 0 until a.length()) {
+                                    val obj = a.getJSONObject(i)
+
+                                    SearchResultList.add(SearchResult(obj.get("text").toString(),obj.get("url").toString()));
+                                }
 
                                 if(!searchClicked) {
                                     LayoutInflater.from(this).inflate(R.layout.recyclerview,layoutview,true)
