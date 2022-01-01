@@ -34,7 +34,15 @@ class rv_ClusterAdapter(val datalist : MutableList<Cluster>) : RecyclerView.Adap
         holder.clusterName.setText(clusterItem.name)
         holder.clusterStrat.setText(clusterItem.strats)
         holder.itemview.setOnClickListener() {
-            holder.itemview.context.startActivity(Intent(holder.itemview.context,ClusterSearchActivity::class.java)) }
+            var changePage = Intent(holder.itemview.context,ClusterSearchActivity::class.java)
+
+            changePage.putExtra("username", clusterItem.username)
+            changePage.putExtra("cluster_name", clusterItem.name)
+            changePage.putExtra("depth", clusterItem.depth.toString())
+
+            println("user:${clusterItem.username} , clust: ${clusterItem.name}, ${clusterItem.depth}")
+
+            holder.itemview.context.startActivity(changePage) }
     }
 
     override fun getItemCount(): Int {

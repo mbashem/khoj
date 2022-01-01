@@ -28,7 +28,7 @@ class ClusterActivity : AppCompatActivity() {
 
 
 
-        val username = getIntent().getStringExtra("username");
+        val username  = getIntent().getStringExtra("username")!!
 
         val cluster_list = mutableListOf<Cluster>()
 
@@ -55,7 +55,7 @@ class ClusterActivity : AppCompatActivity() {
                         for(i in 0 until a.length()) {
                             val obj = a.getJSONObject(i)
 
-                            cluster_list.add(Cluster(obj.get("cluster_name").toString(),""));
+                            cluster_list.add(Cluster(obj.get("cluster_name").toString(),"",username,obj.get("depth").toString().toInt()));
                         }
 
                         val rv_cluster = findViewById<View>(R.id.rvClusterList) as RecyclerView
