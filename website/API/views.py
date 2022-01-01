@@ -32,8 +32,24 @@ def search_result_api(request):
 
     api_result = find_text(user_name, clusters, depth, search_text)
 
+    print(api_result)
 
-    return Response({'msg': dict(api_result)})
+    return_list = []
+
+    for index, tuple in enumerate(api_result):
+        res = {}
+
+        element_one = tuple[0]
+        element_two = tuple[1]
+
+        print(element_one, element_two)
+
+        res['text'] = element_one
+        res['url'] = element_two
+
+        return_list.append(res)
+
+    return Response(return_list)
 
 
 

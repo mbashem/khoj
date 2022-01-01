@@ -87,6 +87,8 @@ def find_text(user_name, cluster_name, depth, search_text):
 
             show_search.append(((send_text), (r.page_url)))
 
+            # show_search.append(({'key':(send_text), 'url':(r.page_url)}))
+
 
     return show_search
 
