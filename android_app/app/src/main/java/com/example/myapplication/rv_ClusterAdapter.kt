@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +35,6 @@ class rv_ClusterAdapter(val datalist : MutableList<Cluster>) : RecyclerView.Adap
         holder.clusterStrat.setText(clusterItem.strats)
         holder.itemview.setOnClickListener() {
             holder.itemview.context.startActivity(Intent(holder.itemview.context,ClusterSearchActivity::class.java)) }
-
     }
 
     override fun getItemCount(): Int {
