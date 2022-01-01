@@ -29,7 +29,8 @@ def StoreData(request):
 
     #received value through html form
     ClusterName = request.POST.get("ClusterName")
-    Depth = int(request.POST.get("DEPTH"))
+    depth = request.POST.get("DEPTH")
+    Depth = int(depth)
     PDF = request.POST.get("PDF")
     TXT = request.POST.get("TXT")
     DOCX = request.POST.get("DOCX")

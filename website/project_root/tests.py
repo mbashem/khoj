@@ -1,10 +1,11 @@
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase, Client
+from django.urls import reverse
 # import unittest
 
 
 # Create your tests here.
  
-class  SimpleTest(SimpleTestCase):
+class SimpleTest(SimpleTestCase):
      def test_index_view_exist(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
@@ -22,4 +23,7 @@ class  SimpleTest(SimpleTestCase):
      def test_logout_view_exist(self):
         response = self.client.get('/logout')
         self.assertEqual(response.status_code, 302)      
-         
+
+
+
+

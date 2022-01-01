@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.contrib.sites.models import Site
+from .models import AuthUser
 
 admin.site.unregister(Site)
+admin.site.register(AuthUser)
 class SiteAdmin(admin.ModelAdmin):
     fields = ('id', 'name', 'domain')
     readonly_fields = ('id',)
